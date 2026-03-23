@@ -1,0 +1,2754 @@
+{
+  "name": "CTU-Connect",
+  "description": "CTU-Connect is an intelligent academic social network platform for Can Tho University featuring microservices architecture with Spring Boot backend, Next.js frontend, and PhoBERT-powered AI recommendation engine.",
+  "languages": [
+    "bash",
+    "java",
+    "javascript",
+    "python",
+    "typescript"
+  ],
+  "frameworks": [
+    "FastAPI",
+    "HuggingFace Transformers",
+    "Neo4j",
+    "Next.js",
+    "PyTorch",
+    "React",
+    "STOMP.js",
+    "Spring Boot",
+    "Spring Cloud",
+    "Spring Kafka",
+    "TailwindCSS",
+    "TanStack Query"
+  ],
+  "files": [
+    {
+      "path": "admin-frontend/eslint.config.mjs",
+      "language": "javascript",
+      "sizeLines": 16
+    },
+    {
+      "path": "admin-frontend/next.config.ts",
+      "language": "typescript",
+      "sizeLines": 7
+    },
+    {
+      "path": "admin-frontend/postcss.config.mjs",
+      "language": "javascript",
+      "sizeLines": 5
+    },
+    {
+      "path": "admin-frontend/src/app/globals.css",
+      "language": "css",
+      "sizeLines": 26
+    },
+    {
+      "path": "admin-frontend/src/app/layout.tsx",
+      "language": "typescript",
+      "sizeLines": 34
+    },
+    {
+      "path": "admin-frontend/src/app/page.tsx",
+      "language": "typescript",
+      "sizeLines": 103
+    },
+    {
+      "path": "api-gateway/src/main/java/com/ctuconnect/ApiGatewayApplication.java",
+      "language": "java",
+      "sizeLines": 14
+    },
+    {
+      "path": "api-gateway/src/main/java/com/ctuconnect/config/CorsConfig.java",
+      "language": "java",
+      "sizeLines": 48
+    },
+    {
+      "path": "api-gateway/src/main/java/com/ctuconnect/config/RouteConfig.java",
+      "language": "java",
+      "sizeLines": 88
+    },
+    {
+      "path": "api-gateway/src/main/java/com/ctuconnect/filter/AuthResponseFilter.java",
+      "language": "java",
+      "sizeLines": 241
+    },
+    {
+      "path": "api-gateway/src/main/java/com/ctuconnect/filter/JwtAuthenticationFilter.java",
+      "language": "java",
+      "sizeLines": 213
+    },
+    {
+      "path": "api-gateway/src/main/java/com/ctuconnect/filter/LoggingFilter.java",
+      "language": "java",
+      "sizeLines": 35
+    },
+    {
+      "path": "api-gateway/src/main/resources/application-docker.properties",
+      "language": "properties",
+      "sizeLines": 25
+    },
+    {
+      "path": "api-gateway/src/main/resources/application.properties",
+      "language": "properties",
+      "sizeLines": 25
+    },
+    {
+      "path": "auth-service/.mvn/wrapper/maven-wrapper.properties",
+      "language": "properties",
+      "sizeLines": 37
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/AuthServiceApplication.java",
+      "language": "java",
+      "sizeLines": 18
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/client/UserServiceClient.java",
+      "language": "java",
+      "sizeLines": 13
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/config/AdminSecurityConfig.java",
+      "language": "java",
+      "sizeLines": 19
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/config/AsyncConfig.java",
+      "language": "java",
+      "sizeLines": 43
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/config/KafkaConfig.java",
+      "language": "java",
+      "sizeLines": 57
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/config/KafkaConsumerConfig.java",
+      "language": "java",
+      "sizeLines": 44
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/config/KafkaProducerConfig.java",
+      "language": "java",
+      "sizeLines": 74
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/config/OpenApiConfig.java",
+      "language": "java",
+      "sizeLines": 40
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/config/RedisConfig.java",
+      "language": "java",
+      "sizeLines": 42
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/config/ServiceHealthIndicator.java",
+      "language": "java",
+      "sizeLines": 19
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/config/WebClientConfig.java",
+      "language": "java",
+      "sizeLines": 14
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/controller/AdminController.java",
+      "language": "java",
+      "sizeLines": 188
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/controller/AuthController.java",
+      "language": "java",
+      "sizeLines": 208
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/dto/AdminCreateUserRequest.java",
+      "language": "java",
+      "sizeLines": 32
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/dto/AdminDashboardDTO.java",
+      "language": "java",
+      "sizeLines": 24
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/dto/AdminPasswordResetRequest.java",
+      "language": "java",
+      "sizeLines": 22
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/dto/AdminUpdateUserRequest.java",
+      "language": "java",
+      "sizeLines": 26
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/dto/AdminUserActivityDTO.java",
+      "language": "java",
+      "sizeLines": 22
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/dto/AuthResponse.java",
+      "language": "java",
+      "sizeLines": 17
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/dto/EmailVerificationDTO.java",
+      "language": "java",
+      "sizeLines": 15
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/dto/JwtAuthResponse.java",
+      "language": "java",
+      "sizeLines": 22
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/dto/LoginRequest.java",
+      "language": "java",
+      "sizeLines": 33
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/dto/PasswordResetRequest.java",
+      "language": "java",
+      "sizeLines": 23
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/dto/RefreshTokenRequest.java",
+      "language": "java",
+      "sizeLines": 17
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/dto/RegisterRequest.java",
+      "language": "java",
+      "sizeLines": 38
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/dto/ResendVerificationRequest.java",
+      "language": "java",
+      "sizeLines": 10
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/dto/UserDTO.java",
+      "language": "java",
+      "sizeLines": 24
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/dto/UserManagementDTO.java",
+      "language": "java",
+      "sizeLines": 22
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/entity/EmailVerificationEntity.java",
+      "language": "java",
+      "sizeLines": 38
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/entity/RefreshTokenEntity.java",
+      "language": "java",
+      "sizeLines": 35
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/entity/UserEntity.java",
+      "language": "java",
+      "sizeLines": 94
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/event/PasswordResetEvent.java",
+      "language": "java",
+      "sizeLines": 15
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/event/UserVerificationEvent.java",
+      "language": "java",
+      "sizeLines": 15
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/exception/EmailAlreadyExistsException.java",
+      "language": "java",
+      "sizeLines": 7
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/exception/GlobalExceptionHandler.java",
+      "language": "java",
+      "sizeLines": 73
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/exception/UsernameAlreadyExistsException.java",
+      "language": "java",
+      "sizeLines": 7
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/init/Init.java",
+      "language": "java",
+      "sizeLines": 82
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/mapper/UserMapper.java",
+      "language": "java",
+      "sizeLines": 20
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/model/UserModel.java",
+      "language": "java",
+      "sizeLines": 14
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/repository/EmailVerificationRepository.java",
+      "language": "java",
+      "sizeLines": 20
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/repository/RefreshTokenRepository.java",
+      "language": "java",
+      "sizeLines": 17
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/repository/UserRepository.java",
+      "language": "java",
+      "sizeLines": 63
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/security/AuthEntryPointJwt.java",
+      "language": "java",
+      "sizeLines": 35
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/security/CustomUserDetailsService.java",
+      "language": "java",
+      "sizeLines": 36
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/security/CustomUserPrincipal.java",
+      "language": "java",
+      "sizeLines": 66
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/security/JwtAuthenticationEntryPoint.java",
+      "language": "java",
+      "sizeLines": 36
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/security/JwtAuthenticationFilter.java",
+      "language": "java",
+      "sizeLines": 64
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/security/JwtService.java",
+      "language": "java",
+      "sizeLines": 140
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/security/JwtTokenProvider.java",
+      "language": "java",
+      "sizeLines": 133
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/security/SecurityConfig.java",
+      "language": "java",
+      "sizeLines": 57
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/service/AdminService.java",
+      "language": "java",
+      "sizeLines": 114
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/service/AuthEventListener.java",
+      "language": "java",
+      "sizeLines": 80
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/service/AuthService.java",
+      "language": "java",
+      "sizeLines": 58
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/service/EmailService.java",
+      "language": "java",
+      "sizeLines": 209
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/service/RecaptchaService.java",
+      "language": "java",
+      "sizeLines": 109
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/service/impl/AdminServiceImpl.java",
+      "language": "java",
+      "sizeLines": 455
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/service/impl/AuthServiceImpl.java",
+      "language": "java",
+      "sizeLines": 450
+    },
+    {
+      "path": "auth-service/src/main/java/com/ctuconnect/util/JwtKeyGeneratorUtility.java",
+      "language": "java",
+      "sizeLines": 24
+    },
+    {
+      "path": "auth-service/src/main/resources/application-docker.properties",
+      "language": "properties",
+      "sizeLines": 64
+    },
+    {
+      "path": "auth-service/src/main/resources/application.properties",
+      "language": "properties",
+      "sizeLines": 74
+    },
+    {
+      "path": "auth-service/src/main/resources/bootstrap.properties",
+      "language": "properties",
+      "sizeLines": 4
+    },
+    {
+      "path": "chat-service/.mvn/wrapper/maven-wrapper.properties",
+      "language": "properties",
+      "sizeLines": 19
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/ChatServiceApplication.java",
+      "language": "java",
+      "sizeLines": 22
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/config/AppConfig.java",
+      "language": "java",
+      "sizeLines": 35
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/config/SecurityConfig.java",
+      "language": "java",
+      "sizeLines": 49
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/config/WebConfig.java",
+      "language": "java",
+      "sizeLines": 32
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/config/WebSocketConfig.java",
+      "language": "java",
+      "sizeLines": 81
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/controller/ConversationController.java",
+      "language": "java",
+      "sizeLines": 121
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/controller/MessageController.java",
+      "language": "java",
+      "sizeLines": 284
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/controller/UserPresenceController.java",
+      "language": "java",
+      "sizeLines": 51
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/dto/request/AddReactionRequest.java",
+      "language": "java",
+      "sizeLines": 18
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/dto/request/CreateConversationRequest.java",
+      "language": "java",
+      "sizeLines": 27
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/dto/request/SendMessageRequest.java",
+      "language": "java",
+      "sizeLines": 37
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/dto/request/TypingRequest.java",
+      "language": "java",
+      "sizeLines": 27
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/dto/request/UpdateConversationRequest.java",
+      "language": "java",
+      "sizeLines": 17
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/dto/response/ChatPageResponse.java",
+      "language": "java",
+      "sizeLines": 20
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/dto/response/ConversationResponse.java",
+      "language": "java",
+      "sizeLines": 25
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/dto/response/MessageAttachmentResponse.java",
+      "language": "java",
+      "sizeLines": 16
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/dto/response/MessageReactionResponse.java",
+      "language": "java",
+      "sizeLines": 17
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/dto/response/MessageResponse.java",
+      "language": "java",
+      "sizeLines": 33
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/dto/response/ParticipantInfo.java",
+      "language": "java",
+      "sizeLines": 20
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/dto/response/UserPresenceResponse.java",
+      "language": "java",
+      "sizeLines": 21
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/exception/ChatException.java",
+      "language": "java",
+      "sizeLines": 29
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/model/Conversation.java",
+      "language": "java",
+      "sizeLines": 68
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/model/Message.java",
+      "language": "java",
+      "sizeLines": 89
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/model/UserPresence.java",
+      "language": "java",
+      "sizeLines": 42
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/repository/ConversationRepository.java",
+      "language": "java",
+      "sizeLines": 36
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/repository/MessageRepository.java",
+      "language": "java",
+      "sizeLines": 45
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/repository/UserPresenceRepository.java",
+      "language": "java",
+      "sizeLines": 39
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/security/AuthenticatedUser.java",
+      "language": "java",
+      "sizeLines": 39
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/security/AuthenticationInterceptor.java",
+      "language": "java",
+      "sizeLines": 61
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/security/SecurityContextHolder.java",
+      "language": "java",
+      "sizeLines": 57
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/security/annotation/RequireAuth.java",
+      "language": "java",
+      "sizeLines": 23
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/security/aspect/AuthorizationAspect.java",
+      "language": "java",
+      "sizeLines": 85
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/service/ConversationService.java",
+      "language": "java",
+      "sizeLines": 348
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/service/MessageService.java",
+      "language": "java",
+      "sizeLines": 356
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/service/NotificationService.java",
+      "language": "java",
+      "sizeLines": 66
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/service/UserPresenceService.java",
+      "language": "java",
+      "sizeLines": 271
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/service/UserService.java",
+      "language": "java",
+      "sizeLines": 52
+    },
+    {
+      "path": "chat-service/src/main/java/com/ctuconnect/service/WebSocketService.java",
+      "language": "java",
+      "sizeLines": 110
+    },
+    {
+      "path": "chat-service/src/main/resources/application-docker.properties",
+      "language": "properties",
+      "sizeLines": 50
+    },
+    {
+      "path": "chat-service/src/main/resources/application.properties",
+      "language": "properties",
+      "sizeLines": 53
+    },
+    {
+      "path": "chat-service/src/test/java/com/ctuconnect/ChatServiceApplicationTests.java",
+      "language": "java",
+      "sizeLines": 13
+    },
+    {
+      "path": "client-frontend/eslint.config.mjs",
+      "language": "javascript",
+      "sizeLines": 16
+    },
+    {
+      "path": "client-frontend/next.config.ts",
+      "language": "typescript",
+      "sizeLines": 7
+    },
+    {
+      "path": "client-frontend/postcss.config.mjs",
+      "language": "javascript",
+      "sizeLines": 5
+    },
+    {
+      "path": "client-frontend/public/contact.tsx",
+      "language": "typescript",
+      "sizeLines": 0
+    },
+    {
+      "path": "client-frontend/src/app/forgot-password/page.tsx",
+      "language": "typescript",
+      "sizeLines": 8
+    },
+    {
+      "path": "client-frontend/src/app/friends/page.tsx",
+      "language": "typescript",
+      "sizeLines": 108
+    },
+    {
+      "path": "client-frontend/src/app/globals.css",
+      "language": "css",
+      "sizeLines": 446
+    },
+    {
+      "path": "client-frontend/src/app/layout.tsx",
+      "language": "typescript",
+      "sizeLines": 50
+    },
+    {
+      "path": "client-frontend/src/app/login/page.tsx",
+      "language": "typescript",
+      "sizeLines": 32
+    },
+    {
+      "path": "client-frontend/src/app/messages/page.tsx",
+      "language": "typescript",
+      "sizeLines": 107
+    },
+    {
+      "path": "client-frontend/src/app/page.tsx",
+      "language": "typescript",
+      "sizeLines": 114
+    },
+    {
+      "path": "client-frontend/src/app/posts/page.tsx",
+      "language": "typescript",
+      "sizeLines": 131
+    },
+    {
+      "path": "client-frontend/src/app/profile/[userId]/page.tsx",
+      "language": "typescript",
+      "sizeLines": 57
+    },
+    {
+      "path": "client-frontend/src/app/profile/me/page.tsx",
+      "language": "typescript",
+      "sizeLines": 42
+    },
+    {
+      "path": "client-frontend/src/app/profile/update/page.tsx",
+      "language": "typescript",
+      "sizeLines": 194
+    },
+    {
+      "path": "client-frontend/src/app/register/page.tsx",
+      "language": "typescript",
+      "sizeLines": 32
+    },
+    {
+      "path": "client-frontend/src/app/reset-password/page.tsx",
+      "language": "typescript",
+      "sizeLines": 8
+    },
+    {
+      "path": "client-frontend/src/app/search/page.tsx",
+      "language": "typescript",
+      "sizeLines": 210
+    },
+    {
+      "path": "client-frontend/src/app/test-auth/page.tsx",
+      "language": "typescript",
+      "sizeLines": 30
+    },
+    {
+      "path": "client-frontend/src/app/verify-email/page.tsx",
+      "language": "typescript",
+      "sizeLines": 255
+    },
+    {
+      "path": "client-frontend/src/components/ClientOnly.tsx",
+      "language": "typescript",
+      "sizeLines": 22
+    },
+    {
+      "path": "client-frontend/src/components/ProfileGuard.tsx",
+      "language": "typescript",
+      "sizeLines": 135
+    },
+    {
+      "path": "client-frontend/src/components/RecaptchaWrapper.tsx",
+      "language": "typescript",
+      "sizeLines": 34
+    },
+    {
+      "path": "client-frontend/src/components/auth/ForgotPasswordForm.tsx",
+      "language": "typescript",
+      "sizeLines": 162
+    },
+    {
+      "path": "client-frontend/src/components/auth/LoginForm.tsx",
+      "language": "typescript",
+      "sizeLines": 198
+    },
+    {
+      "path": "client-frontend/src/components/auth/ProtectedRoute.tsx",
+      "language": "typescript",
+      "sizeLines": 39
+    },
+    {
+      "path": "client-frontend/src/components/auth/RegisterForm.tsx",
+      "language": "typescript",
+      "sizeLines": 392
+    },
+    {
+      "path": "client-frontend/src/components/auth/ResetPasswordForm.tsx",
+      "language": "typescript",
+      "sizeLines": 233
+    },
+    {
+      "path": "client-frontend/src/components/chat/ChatList.tsx",
+      "language": "typescript",
+      "sizeLines": 0
+    },
+    {
+      "path": "client-frontend/src/components/chat/ChatMessageArea.tsx",
+      "language": "typescript",
+      "sizeLines": 523
+    },
+    {
+      "path": "client-frontend/src/components/chat/ChatSidebar.tsx",
+      "language": "typescript",
+      "sizeLines": 406
+    },
+    {
+      "path": "client-frontend/src/components/chat/ChatWindow.tsx",
+      "language": "typescript",
+      "sizeLines": 201
+    },
+    {
+      "path": "client-frontend/src/components/chat/ConversationList.tsx",
+      "language": "typescript",
+      "sizeLines": 148
+    },
+    {
+      "path": "client-frontend/src/components/chat/MessageArea.tsx",
+      "language": "typescript",
+      "sizeLines": 255
+    },
+    {
+      "path": "client-frontend/src/components/chat/MessageBubble.tsx",
+      "language": "typescript",
+      "sizeLines": 299
+    },
+    {
+      "path": "client-frontend/src/components/chat/MessageInput.tsx",
+      "language": "typescript",
+      "sizeLines": 275
+    },
+    {
+      "path": "client-frontend/src/components/chat/NewConversationModal.tsx",
+      "language": "typescript",
+      "sizeLines": 97
+    },
+    {
+      "path": "client-frontend/src/components/chat/TypingIndicator.tsx",
+      "language": "typescript",
+      "sizeLines": 44
+    },
+    {
+      "path": "client-frontend/src/components/chat/UserPresenceBar.tsx",
+      "language": "typescript",
+      "sizeLines": 25
+    },
+    {
+      "path": "client-frontend/src/components/post/CommentItem.tsx",
+      "language": "typescript",
+      "sizeLines": 519
+    },
+    {
+      "path": "client-frontend/src/components/post/CreatePost.tsx",
+      "language": "typescript",
+      "sizeLines": 470
+    },
+    {
+      "path": "client-frontend/src/components/post/EditIndicator.tsx",
+      "language": "typescript",
+      "sizeLines": 27
+    },
+    {
+      "path": "client-frontend/src/components/post/PostCard.tsx",
+      "language": "typescript",
+      "sizeLines": 906
+    },
+    {
+      "path": "client-frontend/src/components/post/PostEditModal.tsx",
+      "language": "typescript",
+      "sizeLines": 256
+    },
+    {
+      "path": "client-frontend/src/components/post/PostFeed.tsx",
+      "language": "typescript",
+      "sizeLines": 330
+    },
+    {
+      "path": "client-frontend/src/components/post/PostMenu.tsx",
+      "language": "typescript",
+      "sizeLines": 155
+    },
+    {
+      "path": "client-frontend/src/components/post/index.ts",
+      "language": "typescript",
+      "sizeLines": 4
+    },
+    {
+      "path": "client-frontend/src/components/profile/ConnectionsModal.tsx",
+      "language": "typescript",
+      "sizeLines": 197
+    },
+    {
+      "path": "client-frontend/src/components/profile/LecturerProfileForm.tsx",
+      "language": "typescript",
+      "sizeLines": 357
+    },
+    {
+      "path": "client-frontend/src/components/profile/LecturerProfileInfo.tsx",
+      "language": "typescript",
+      "sizeLines": 78
+    },
+    {
+      "path": "client-frontend/src/components/profile/ProfileHeader.tsx",
+      "language": "typescript",
+      "sizeLines": 271
+    },
+    {
+      "path": "client-frontend/src/components/profile/ProfilePhotoModal.tsx",
+      "language": "typescript",
+      "sizeLines": 171
+    },
+    {
+      "path": "client-frontend/src/components/profile/ProfilePostFeed.tsx",
+      "language": "typescript",
+      "sizeLines": 285
+    },
+    {
+      "path": "client-frontend/src/components/profile/ProfileStats.tsx",
+      "language": "typescript",
+      "sizeLines": 91
+    },
+    {
+      "path": "client-frontend/src/components/profile/StudentProfileForm.tsx",
+      "language": "typescript",
+      "sizeLines": 409
+    },
+    {
+      "path": "client-frontend/src/components/profile/StudentProfileInfo.tsx",
+      "language": "typescript",
+      "sizeLines": 65
+    },
+    {
+      "path": "client-frontend/src/components/search/HeaderSearch.tsx",
+      "language": "typescript",
+      "sizeLines": 215
+    },
+    {
+      "path": "client-frontend/src/components/search/RelatedPosts.tsx",
+      "language": "typescript",
+      "sizeLines": 163
+    },
+    {
+      "path": "client-frontend/src/components/search/SearchBar.tsx",
+      "language": "typescript",
+      "sizeLines": 405
+    },
+    {
+      "path": "client-frontend/src/components/search/SearchResults.tsx",
+      "language": "typescript",
+      "sizeLines": 308
+    },
+    {
+      "path": "client-frontend/src/components/search/TrendingSearches.tsx",
+      "language": "typescript",
+      "sizeLines": 108
+    },
+    {
+      "path": "client-frontend/src/components/search/index.ts",
+      "language": "typescript",
+      "sizeLines": 14
+    },
+    {
+      "path": "client-frontend/src/components/ui/Avatar.tsx",
+      "language": "typescript",
+      "sizeLines": 92
+    },
+    {
+      "path": "client-frontend/src/components/ui/Button.tsx",
+      "language": "typescript",
+      "sizeLines": 51
+    },
+    {
+      "path": "client-frontend/src/components/ui/Card.tsx",
+      "language": "typescript",
+      "sizeLines": 63
+    },
+    {
+      "path": "client-frontend/src/components/ui/ErrorAlert.tsx",
+      "language": "typescript",
+      "sizeLines": 68
+    },
+    {
+      "path": "client-frontend/src/components/ui/FriendButton.tsx",
+      "language": "typescript",
+      "sizeLines": 204
+    },
+    {
+      "path": "client-frontend/src/components/ui/Input.tsx",
+      "language": "typescript",
+      "sizeLines": 43
+    },
+    {
+      "path": "client-frontend/src/components/ui/Loading.tsx",
+      "language": "typescript",
+      "sizeLines": 37
+    },
+    {
+      "path": "client-frontend/src/components/ui/LoadingSpinner.tsx",
+      "language": "typescript",
+      "sizeLines": 19
+    },
+    {
+      "path": "client-frontend/src/components/ui/Modal.tsx",
+      "language": "typescript",
+      "sizeLines": 95
+    },
+    {
+      "path": "client-frontend/src/components/ui/ReactionButton.tsx",
+      "language": "typescript",
+      "sizeLines": 174
+    },
+    {
+      "path": "client-frontend/src/components/ui/ReactionPicker.tsx",
+      "language": "typescript",
+      "sizeLines": 102
+    },
+    {
+      "path": "client-frontend/src/components/ui/RichTextEditor.tsx",
+      "language": "typescript",
+      "sizeLines": 223
+    },
+    {
+      "path": "client-frontend/src/components/ui/Textarea.tsx",
+      "language": "typescript",
+      "sizeLines": 43
+    },
+    {
+      "path": "client-frontend/src/components/ui/UploadFile.tsx",
+      "language": "typescript",
+      "sizeLines": 181
+    },
+    {
+      "path": "client-frontend/src/components/user/UserCard.tsx",
+      "language": "typescript",
+      "sizeLines": 170
+    },
+    {
+      "path": "client-frontend/src/components/user/UserProfile.tsx",
+      "language": "typescript",
+      "sizeLines": 313
+    },
+    {
+      "path": "client-frontend/src/contexts/AuthContext.tsx",
+      "language": "typescript",
+      "sizeLines": 198
+    },
+    {
+      "path": "client-frontend/src/contexts/ChatContext.tsx",
+      "language": "typescript",
+      "sizeLines": 354
+    },
+    {
+      "path": "client-frontend/src/contexts/QueryProvider.tsx",
+      "language": "typescript",
+      "sizeLines": 18
+    },
+    {
+      "path": "client-frontend/src/contexts/ToastContext.tsx",
+      "language": "typescript",
+      "sizeLines": 188
+    },
+    {
+      "path": "client-frontend/src/features/auth/index.ts",
+      "language": "typescript",
+      "sizeLines": 0
+    },
+    {
+      "path": "client-frontend/src/features/auth/services/auth.service.ts",
+      "language": "typescript",
+      "sizeLines": 77
+    },
+    {
+      "path": "client-frontend/src/features/auth/services/index.ts",
+      "language": "typescript",
+      "sizeLines": 2
+    },
+    {
+      "path": "client-frontend/src/features/chat/index.ts",
+      "language": "typescript",
+      "sizeLines": 31
+    },
+    {
+      "path": "client-frontend/src/features/chat/services/chat.service.ts",
+      "language": "typescript",
+      "sizeLines": 190
+    },
+    {
+      "path": "client-frontend/src/features/chat/services/index.ts",
+      "language": "typescript",
+      "sizeLines": 7
+    },
+    {
+      "path": "client-frontend/src/features/posts/index.ts",
+      "language": "typescript",
+      "sizeLines": 29
+    },
+    {
+      "path": "client-frontend/src/features/posts/services/index.ts",
+      "language": "typescript",
+      "sizeLines": 7
+    },
+    {
+      "path": "client-frontend/src/features/posts/services/post.service.ts",
+      "language": "typescript",
+      "sizeLines": 201
+    },
+    {
+      "path": "client-frontend/src/features/search/index.ts",
+      "language": "typescript",
+      "sizeLines": 29
+    },
+    {
+      "path": "client-frontend/src/features/users/components/UserCard.tsx",
+      "language": "typescript",
+      "sizeLines": 178
+    },
+    {
+      "path": "client-frontend/src/features/users/components/friends/FriendRequestsList.tsx",
+      "language": "typescript",
+      "sizeLines": 240
+    },
+    {
+      "path": "client-frontend/src/features/users/components/friends/FriendSuggestions.tsx",
+      "language": "typescript",
+      "sizeLines": 486
+    },
+    {
+      "path": "client-frontend/src/features/users/components/friends/FriendsList.tsx",
+      "language": "typescript",
+      "sizeLines": 227
+    },
+    {
+      "path": "client-frontend/src/features/users/components/friends/MutualFriends.tsx",
+      "language": "typescript",
+      "sizeLines": 110
+    },
+    {
+      "path": "client-frontend/src/features/users/index.ts",
+      "language": "typescript",
+      "sizeLines": 28
+    },
+    {
+      "path": "client-frontend/src/features/users/services/index.ts",
+      "language": "typescript",
+      "sizeLines": 7
+    },
+    {
+      "path": "client-frontend/src/features/users/services/user.service.ts",
+      "language": "typescript",
+      "sizeLines": 148
+    },
+    {
+      "path": "client-frontend/src/hooks/useChatHooks.ts",
+      "language": "typescript",
+      "sizeLines": 245
+    },
+    {
+      "path": "client-frontend/src/hooks/useMediaHooks.ts",
+      "language": "typescript",
+      "sizeLines": 48
+    },
+    {
+      "path": "client-frontend/src/hooks/usePostHooks.ts",
+      "language": "typescript",
+      "sizeLines": 137
+    },
+    {
+      "path": "client-frontend/src/hooks/useProfileCompletion.ts",
+      "language": "typescript",
+      "sizeLines": 40
+    },
+    {
+      "path": "client-frontend/src/hooks/useRecaptcha.ts",
+      "language": "typescript",
+      "sizeLines": 46
+    },
+    {
+      "path": "client-frontend/src/hooks/useSearch.ts",
+      "language": "typescript",
+      "sizeLines": 195
+    },
+    {
+      "path": "client-frontend/src/hooks/useToast.ts",
+      "language": "typescript",
+      "sizeLines": 14
+    },
+    {
+      "path": "client-frontend/src/hooks/useUploadMedia.ts",
+      "language": "typescript",
+      "sizeLines": 57
+    },
+    {
+      "path": "client-frontend/src/hooks/useUserHooks.ts",
+      "language": "typescript",
+      "sizeLines": 94
+    },
+    {
+      "path": "client-frontend/src/lib/api.ts",
+      "language": "typescript",
+      "sizeLines": 104
+    },
+    {
+      "path": "client-frontend/src/lib/locales/vi.ts",
+      "language": "typescript",
+      "sizeLines": 172
+    },
+    {
+      "path": "client-frontend/src/services/authService.ts",
+      "language": "typescript",
+      "sizeLines": 125
+    },
+    {
+      "path": "client-frontend/src/services/categoryService.ts",
+      "language": "typescript",
+      "sizeLines": 188
+    },
+    {
+      "path": "client-frontend/src/services/chatService.ts",
+      "language": "typescript",
+      "sizeLines": 52
+    },
+    {
+      "path": "client-frontend/src/services/mediaService.ts",
+      "language": "typescript",
+      "sizeLines": 67
+    },
+    {
+      "path": "client-frontend/src/services/postService.ts",
+      "language": "typescript",
+      "sizeLines": 521
+    },
+    {
+      "path": "client-frontend/src/services/searchService.ts",
+      "language": "typescript",
+      "sizeLines": 175
+    },
+    {
+      "path": "client-frontend/src/services/userService.ts",
+      "language": "typescript",
+      "sizeLines": 257
+    },
+    {
+      "path": "client-frontend/src/services/websocket.service.ts",
+      "language": "typescript",
+      "sizeLines": 278
+    },
+    {
+      "path": "client-frontend/src/shared/config/api-client.ts",
+      "language": "typescript",
+      "sizeLines": 84
+    },
+    {
+      "path": "client-frontend/src/shared/constants/api-endpoints.ts",
+      "language": "typescript",
+      "sizeLines": 116
+    },
+    {
+      "path": "client-frontend/src/shared/constants/api.ts",
+      "language": "typescript",
+      "sizeLines": 50
+    },
+    {
+      "path": "client-frontend/src/shared/constants/app.ts",
+      "language": "typescript",
+      "sizeLines": 55
+    },
+    {
+      "path": "client-frontend/src/shared/constants/index.ts",
+      "language": "typescript",
+      "sizeLines": 4
+    },
+    {
+      "path": "client-frontend/src/shared/services/analytics.service.ts",
+      "language": "typescript",
+      "sizeLines": 96
+    },
+    {
+      "path": "client-frontend/src/shared/services/auth.service.ts",
+      "language": "typescript",
+      "sizeLines": 78
+    },
+    {
+      "path": "client-frontend/src/shared/services/chat.service.ts",
+      "language": "typescript",
+      "sizeLines": 190
+    },
+    {
+      "path": "client-frontend/src/shared/services/index.ts",
+      "language": "typescript",
+      "sizeLines": 11
+    },
+    {
+      "path": "client-frontend/src/shared/services/notification.service.ts",
+      "language": "typescript",
+      "sizeLines": 62
+    },
+    {
+      "path": "client-frontend/src/shared/services/post.service.ts",
+      "language": "typescript",
+      "sizeLines": 188
+    },
+    {
+      "path": "client-frontend/src/shared/services/settings.service.ts",
+      "language": "typescript",
+      "sizeLines": 121
+    },
+    {
+      "path": "client-frontend/src/shared/services/upload.service.ts",
+      "language": "typescript",
+      "sizeLines": 65
+    },
+    {
+      "path": "client-frontend/src/shared/services/user.service.ts",
+      "language": "typescript",
+      "sizeLines": 118
+    },
+    {
+      "path": "client-frontend/src/shared/types/auth.ts",
+      "language": "typescript",
+      "sizeLines": 63
+    },
+    {
+      "path": "client-frontend/src/shared/types/chat.ts",
+      "language": "typescript",
+      "sizeLines": 96
+    },
+    {
+      "path": "client-frontend/src/shared/types/common.ts",
+      "language": "typescript",
+      "sizeLines": 61
+    },
+    {
+      "path": "client-frontend/src/shared/types/index.ts",
+      "language": "typescript",
+      "sizeLines": 46
+    },
+    {
+      "path": "client-frontend/src/shared/types/post.ts",
+      "language": "typescript",
+      "sizeLines": 76
+    },
+    {
+      "path": "client-frontend/src/shared/types/user.ts",
+      "language": "typescript",
+      "sizeLines": 135
+    },
+    {
+      "path": "client-frontend/src/shared/utils/api.ts",
+      "language": "typescript",
+      "sizeLines": 88
+    },
+    {
+      "path": "client-frontend/src/shared/utils/index.ts",
+      "language": "typescript",
+      "sizeLines": 16
+    },
+    {
+      "path": "client-frontend/src/types/index.ts",
+      "language": "typescript",
+      "sizeLines": 323
+    },
+    {
+      "path": "client-frontend/src/utils/commentManager.ts",
+      "language": "typescript",
+      "sizeLines": 251
+    },
+    {
+      "path": "client-frontend/src/utils/helpers.ts",
+      "language": "typescript",
+      "sizeLines": 84
+    },
+    {
+      "path": "client-frontend/src/utils/localization.ts",
+      "language": "typescript",
+      "sizeLines": 92
+    },
+    {
+      "path": "client-frontend/src/utils/richTextUtils.ts",
+      "language": "typescript",
+      "sizeLines": 75
+    },
+    {
+      "path": "client-frontend/verify-reactions.js",
+      "language": "javascript",
+      "sizeLines": 137
+    },
+    {
+      "path": "database/auth_db/01-init.sql",
+      "language": "sql",
+      "sizeLines": 154
+    },
+    {
+      "path": "database/media_db/01-init.sql",
+      "language": "sql",
+      "sizeLines": 0
+    },
+    {
+      "path": "database/neo4j/init.sh",
+      "language": "bash",
+      "sizeLines": 10
+    },
+    {
+      "path": "eureka-server/.mvn/wrapper/maven-wrapper.properties",
+      "language": "properties",
+      "sizeLines": 19
+    },
+    {
+      "path": "eureka-server/src/main/java/com/ctuconnect/EurekaServerApplication.java",
+      "language": "java",
+      "sizeLines": 14
+    },
+    {
+      "path": "eureka-server/src/main/resources/application-docker.properties",
+      "language": "properties",
+      "sizeLines": 23
+    },
+    {
+      "path": "eureka-server/src/main/resources/application.properties",
+      "language": "properties",
+      "sizeLines": 17
+    },
+    {
+      "path": "eureka-server/src/main/resources/bootstrap.properties",
+      "language": "properties",
+      "sizeLines": 1
+    },
+    {
+      "path": "eureka-server/src/test/java/com/ctuconnect/EurekaServerApplicationTests.java",
+      "language": "java",
+      "sizeLines": 13
+    },
+    {
+      "path": "media-service/.mvn/wrapper/maven-wrapper.properties",
+      "language": "properties",
+      "sizeLines": 19
+    },
+    {
+      "path": "media-service/src/main/java/com/ctuconnect/MediaServiceApplication.java",
+      "language": "java",
+      "sizeLines": 15
+    },
+    {
+      "path": "media-service/src/main/java/com/ctuconnect/config/CloudinaryConfig.java",
+      "language": "java",
+      "sizeLines": 30
+    },
+    {
+      "path": "media-service/src/main/java/com/ctuconnect/config/KafkaConfig.java",
+      "language": "java",
+      "sizeLines": 35
+    },
+    {
+      "path": "media-service/src/main/java/com/ctuconnect/config/WebConfig.java",
+      "language": "java",
+      "sizeLines": 29
+    },
+    {
+      "path": "media-service/src/main/java/com/ctuconnect/controller/MediaController.java",
+      "language": "java",
+      "sizeLines": 95
+    },
+    {
+      "path": "media-service/src/main/java/com/ctuconnect/dto/MediaResponse.java",
+      "language": "java",
+      "sizeLines": 26
+    },
+    {
+      "path": "media-service/src/main/java/com/ctuconnect/dto/MediaUploadRequest.java",
+      "language": "java",
+      "sizeLines": 16
+    },
+    {
+      "path": "media-service/src/main/java/com/ctuconnect/entity/Media.java",
+      "language": "java",
+      "sizeLines": 68
+    },
+    {
+      "path": "media-service/src/main/java/com/ctuconnect/exception/GlobalExceptionHandler.java",
+      "language": "java",
+      "sizeLines": 53
+    },
+    {
+      "path": "media-service/src/main/java/com/ctuconnect/exception/MediaNotFoundException.java",
+      "language": "java",
+      "sizeLines": 7
+    },
+    {
+      "path": "media-service/src/main/java/com/ctuconnect/exception/MediaUploadException.java",
+      "language": "java",
+      "sizeLines": 7
+    },
+    {
+      "path": "media-service/src/main/java/com/ctuconnect/repository/MediaRepository.java",
+      "language": "java",
+      "sizeLines": 28
+    },
+    {
+      "path": "media-service/src/main/java/com/ctuconnect/security/AuthenticatedUser.java",
+      "language": "java",
+      "sizeLines": 39
+    },
+    {
+      "path": "media-service/src/main/java/com/ctuconnect/security/AuthenticationInterceptor.java",
+      "language": "java",
+      "sizeLines": 61
+    },
+    {
+      "path": "media-service/src/main/java/com/ctuconnect/security/SecurityContextHolder.java",
+      "language": "java",
+      "sizeLines": 57
+    },
+    {
+      "path": "media-service/src/main/java/com/ctuconnect/security/annotation/RequireAuth.java",
+      "language": "java",
+      "sizeLines": 23
+    },
+    {
+      "path": "media-service/src/main/java/com/ctuconnect/security/aspect/AuthorizationAspect.java",
+      "language": "java",
+      "sizeLines": 86
+    },
+    {
+      "path": "media-service/src/main/java/com/ctuconnect/service/KafkaProducerService.java",
+      "language": "java",
+      "sizeLines": 68
+    },
+    {
+      "path": "media-service/src/main/java/com/ctuconnect/service/MediaService.java",
+      "language": "java",
+      "sizeLines": 197
+    },
+    {
+      "path": "media-service/src/main/resources/application-docker.properties",
+      "language": "properties",
+      "sizeLines": 42
+    },
+    {
+      "path": "media-service/src/main/resources/application.properties",
+      "language": "properties",
+      "sizeLines": 47
+    },
+    {
+      "path": "media-service/src/main/resources/bootstrap.properties",
+      "language": "properties",
+      "sizeLines": 4
+    },
+    {
+      "path": "media-service/src/test/java/com/ctuconnect/MediaServiceApplicationTests.java",
+      "language": "java",
+      "sizeLines": 13
+    },
+    {
+      "path": "post-service/.mvn/wrapper/maven-wrapper.properties",
+      "language": "properties",
+      "sizeLines": 19
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/PostServiceApplication.java",
+      "language": "java",
+      "sizeLines": 20
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/client/MediaServiceClient.java",
+      "language": "java",
+      "sizeLines": 85
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/client/RecommendationServiceClient.java",
+      "language": "java",
+      "sizeLines": 35
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/client/RecommendationServiceClientFallback.java",
+      "language": "java",
+      "sizeLines": 33
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/client/UserServiceClient.java",
+      "language": "java",
+      "sizeLines": 44
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/config/CacheConfig.java",
+      "language": "java",
+      "sizeLines": 42
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/config/FeignConfig.java",
+      "language": "java",
+      "sizeLines": 67
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/config/KafkaConfig.java",
+      "language": "java",
+      "sizeLines": 35
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/config/WebConfig.java",
+      "language": "java",
+      "sizeLines": 29
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/config/WebSocketConfig.java",
+      "language": "java",
+      "sizeLines": 32
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/controller/AdminController.java",
+      "language": "java",
+      "sizeLines": 134
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/controller/CommentController.java",
+      "language": "java",
+      "sizeLines": 178
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/controller/PostController.java",
+      "language": "java",
+      "sizeLines": 922
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/controller/RecommendationController.java",
+      "language": "java",
+      "sizeLines": 231
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/controller/SearchController.java",
+      "language": "java",
+      "sizeLines": 247
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/dto/AuthorInfo.java",
+      "language": "java",
+      "sizeLines": 38
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/dto/MediaDocument.java",
+      "language": "java",
+      "sizeLines": 22
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/dto/NotificationDTO.java",
+      "language": "java",
+      "sizeLines": 31
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/dto/request/CommentRequest.java",
+      "language": "java",
+      "sizeLines": 21
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/dto/request/InteractionRequest.java",
+      "language": "java",
+      "sizeLines": 62
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/dto/request/PostRequest.java",
+      "language": "java",
+      "sizeLines": 52
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/dto/request/ScheduledPostRequest.java",
+      "language": "java",
+      "sizeLines": 24
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/dto/request/SearchRequest.java",
+      "language": "java",
+      "sizeLines": 40
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/dto/response/CommentResponse.java",
+      "language": "java",
+      "sizeLines": 76
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/dto/response/InteractionResponse.java",
+      "language": "java",
+      "sizeLines": 68
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/dto/response/PostAnalyticsResponse.java",
+      "language": "java",
+      "sizeLines": 33
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/dto/response/PostResponse.java",
+      "language": "java",
+      "sizeLines": 73
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/dto/response/RecommendationFeedResponse.java",
+      "language": "java",
+      "sizeLines": 59
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/dto/response/SearchResponse.java",
+      "language": "java",
+      "sizeLines": 31
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/dto/response/SearchSuggestionResponse.java",
+      "language": "java",
+      "sizeLines": 31
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/entity/CommentEntity.java",
+      "language": "java",
+      "sizeLines": 105
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/entity/InteractionEntity.java",
+      "language": "java",
+      "sizeLines": 128
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/entity/NotificationEntity.java",
+      "language": "java",
+      "sizeLines": 58
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/entity/PostEntity.java",
+      "language": "java",
+      "sizeLines": 285
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/repository/CommentRepository.java",
+      "language": "java",
+      "sizeLines": 71
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/repository/InteractionRepository.java",
+      "language": "java",
+      "sizeLines": 53
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/repository/NotificationRepository.java",
+      "language": "java",
+      "sizeLines": 28
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/repository/PostRepository.java",
+      "language": "java",
+      "sizeLines": 137
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/security/AuthenticatedUser.java",
+      "language": "java",
+      "sizeLines": 39
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/security/AuthenticationInterceptor.java",
+      "language": "java",
+      "sizeLines": 60
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/security/SecurityContextHolder.java",
+      "language": "java",
+      "sizeLines": 57
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/security/annotation/RequireAuth.java",
+      "language": "java",
+      "sizeLines": 23
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/security/aspect/AuthorizationAspect.java",
+      "language": "java",
+      "sizeLines": 86
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/service/CommentService.java",
+      "language": "java",
+      "sizeLines": 285
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/service/DataConsistencyService.java",
+      "language": "java",
+      "sizeLines": 334
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/service/EventService.java",
+      "language": "java",
+      "sizeLines": 92
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/service/InteractionService.java",
+      "language": "java",
+      "sizeLines": 217
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/service/NewsFeedService.java",
+      "language": "java",
+      "sizeLines": 332
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/service/NotificationService.java",
+      "language": "java",
+      "sizeLines": 272
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/service/PostInteractionService.java",
+      "language": "java",
+      "sizeLines": 323
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/service/PostService.java",
+      "language": "java",
+      "sizeLines": 595
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/service/RecommendationService.java",
+      "language": "java",
+      "sizeLines": 454
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/service/SearchService.java",
+      "language": "java",
+      "sizeLines": 333
+    },
+    {
+      "path": "post-service/src/main/java/com/ctuconnect/service/UserSyncService.java",
+      "language": "java",
+      "sizeLines": 183
+    },
+    {
+      "path": "post-service/src/main/resources/application-docker.properties",
+      "language": "properties",
+      "sizeLines": 56
+    },
+    {
+      "path": "post-service/src/main/resources/application.properties",
+      "language": "properties",
+      "sizeLines": 60
+    },
+    {
+      "path": "post-service/src/test/java/com/ctuconnect/postservice/PostServiceApplicationTests.java",
+      "language": "java",
+      "sizeLines": 13
+    },
+    {
+      "path": "recommend-service/docker/init-db/01-init-recommend-db.sql",
+      "language": "sql",
+      "sizeLines": 210
+    },
+    {
+      "path": "recommend-service/docker/init-db/02-friend-recommendation-schema.sql",
+      "language": "sql",
+      "sizeLines": 272
+    },
+    {
+      "path": "recommend-service/java-api/.mvn/wrapper/maven-wrapper.properties",
+      "language": "properties",
+      "sizeLines": 2
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/RecommendationServiceApplication.java",
+      "language": "java",
+      "sizeLines": 43
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/client/PostServiceClient.java",
+      "language": "java",
+      "sizeLines": 53
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/client/PostServiceClientFallback.java",
+      "language": "java",
+      "sizeLines": 47
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/client/PythonModelServiceClient.java",
+      "language": "java",
+      "sizeLines": 215
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/client/UserServiceClient.java",
+      "language": "java",
+      "sizeLines": 203
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/client/UserServiceFeignClient.java",
+      "language": "java",
+      "sizeLines": 33
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/client/UserServiceFeignClientFallback.java",
+      "language": "java",
+      "sizeLines": 42
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/config/FeignConfig.java",
+      "language": "java",
+      "sizeLines": 45
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/config/KafkaConfig.java",
+      "language": "java",
+      "sizeLines": 54
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/config/KafkaConsumerConfig.java",
+      "language": "java",
+      "sizeLines": 93
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/config/RedisConfig.java",
+      "language": "java",
+      "sizeLines": 125
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/config/WebClientConfig.java",
+      "language": "java",
+      "sizeLines": 17
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/controller/FriendRecommendationController.java",
+      "language": "java",
+      "sizeLines": 154
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/controller/RecommendationController.java",
+      "language": "java",
+      "sizeLines": 349
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/exception/GlobalExceptionHandler.java",
+      "language": "java",
+      "sizeLines": 51
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/kafka/consumer/PostEventConsumer.java",
+      "language": "java",
+      "sizeLines": 235
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/kafka/consumer/UserActionConsumer.java",
+      "language": "java",
+      "sizeLines": 232
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/kafka/event/PostEvent.java",
+      "language": "java",
+      "sizeLines": 129
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/kafka/event/UserActionEvent.java",
+      "language": "java",
+      "sizeLines": 24
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/kafka/producer/TrainingDataProducer.java",
+      "language": "java",
+      "sizeLines": 51
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/kafka/producer/UserInteractionProducer.java",
+      "language": "java",
+      "sizeLines": 81
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/dto/CandidatePost.java",
+      "language": "java",
+      "sizeLines": 85
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/dto/EmbeddingRequest.java",
+      "language": "java",
+      "sizeLines": 22
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/dto/EmbeddingResponse.java",
+      "language": "java",
+      "sizeLines": 22
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/dto/FeedbackRequest.java",
+      "language": "java",
+      "sizeLines": 36
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/dto/FriendCandidateDTO.java",
+      "language": "java",
+      "sizeLines": 49
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/dto/FriendRankingRequest.java",
+      "language": "java",
+      "sizeLines": 86
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/dto/FriendRankingResponse.java",
+      "language": "java",
+      "sizeLines": 73
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/dto/FriendRecommendationResponse.java",
+      "language": "java",
+      "sizeLines": 109
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/dto/PostDTO.java",
+      "language": "java",
+      "sizeLines": 36
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/dto/PythonModelRequest.java",
+      "language": "java",
+      "sizeLines": 23
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/dto/PythonModelResponse.java",
+      "language": "java",
+      "sizeLines": 35
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/dto/RecommendationRequest.java",
+      "language": "java",
+      "sizeLines": 39
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/dto/RecommendationResponse.java",
+      "language": "java",
+      "sizeLines": 72
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/dto/UserAcademicProfile.java",
+      "language": "java",
+      "sizeLines": 24
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/dto/UserDTO.java",
+      "language": "java",
+      "sizeLines": 28
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/dto/UserInteractionHistory.java",
+      "language": "java",
+      "sizeLines": 40
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/entity/neo4j/GraphRelationship.java",
+      "language": "java",
+      "sizeLines": 22
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/entity/neo4j/PostNode.java",
+      "language": "java",
+      "sizeLines": 52
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/entity/neo4j/UserNode.java",
+      "language": "java",
+      "sizeLines": 60
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/entity/postgres/FriendRecommendationLog.java",
+      "language": "java",
+      "sizeLines": 145
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/entity/postgres/PostEmbedding.java",
+      "language": "java",
+      "sizeLines": 172
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/entity/postgres/RecommendationCache.java",
+      "language": "java",
+      "sizeLines": 60
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/entity/postgres/UserActivityScore.java",
+      "language": "java",
+      "sizeLines": 185
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/entity/postgres/UserEmbedding.java",
+      "language": "java",
+      "sizeLines": 116
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/entity/postgres/UserFeedback.java",
+      "language": "java",
+      "sizeLines": 94
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/enums/AcademicCategory.java",
+      "language": "java",
+      "sizeLines": 16
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/enums/FeedbackType.java",
+      "language": "java",
+      "sizeLines": 17
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/model/enums/RelationshipType.java",
+      "language": "java",
+      "sizeLines": 15
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/nlp/EmbeddingService.java",
+      "language": "java",
+      "sizeLines": 184
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/ranking/RankingEngine.java",
+      "language": "java",
+      "sizeLines": 266
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/repository/neo4j/PostGraphRepository.java",
+      "language": "java",
+      "sizeLines": 73
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/repository/neo4j/UserGraphRepository.java",
+      "language": "java",
+      "sizeLines": 171
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/repository/postgres/FriendRecommendationLogRepository.java",
+      "language": "java",
+      "sizeLines": 159
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/repository/postgres/PostEmbeddingRepository.java",
+      "language": "java",
+      "sizeLines": 90
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/repository/postgres/RecommendationCacheRepository.java",
+      "language": "java",
+      "sizeLines": 32
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/repository/postgres/UserActivityScoreRepository.java",
+      "language": "java",
+      "sizeLines": 159
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/repository/postgres/UserEmbeddingRepository.java",
+      "language": "java",
+      "sizeLines": 94
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/repository/postgres/UserFeedbackRepository.java",
+      "language": "java",
+      "sizeLines": 50
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/repository/redis/RedisCacheService.java",
+      "language": "java",
+      "sizeLines": 295
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/service/HybridFriendRecommendationService.java",
+      "language": "java",
+      "sizeLines": 569
+    },
+    {
+      "path": "recommend-service/java-api/src/main/java/vn/ctu/edu/recommend/service/HybridRecommendationService.java",
+      "language": "java",
+      "sizeLines": 825
+    },
+    {
+      "path": "recommend-service/python-model/api/__init__.py",
+      "language": "python",
+      "sizeLines": 0
+    },
+    {
+      "path": "recommend-service/python-model/api/routes.py",
+      "language": "python",
+      "sizeLines": 200
+    },
+    {
+      "path": "recommend-service/python-model/config.py",
+      "language": "python",
+      "sizeLines": 90
+    },
+    {
+      "path": "recommend-service/python-model/inference.py",
+      "language": "python",
+      "sizeLines": 253
+    },
+    {
+      "path": "recommend-service/python-model/models/__init__.py",
+      "language": "python",
+      "sizeLines": 0
+    },
+    {
+      "path": "recommend-service/python-model/models/schemas.py",
+      "language": "python",
+      "sizeLines": 127
+    },
+    {
+      "path": "recommend-service/python-model/server.py",
+      "language": "python",
+      "sizeLines": 872
+    },
+    {
+      "path": "recommend-service/python-model/services/__init__.py",
+      "language": "python",
+      "sizeLines": 12
+    },
+    {
+      "path": "recommend-service/python-model/services/academic_classifier_service.py",
+      "language": "python",
+      "sizeLines": 326
+    },
+    {
+      "path": "recommend-service/python-model/services/prediction_service.py",
+      "language": "python",
+      "sizeLines": 620
+    },
+    {
+      "path": "recommend-service/python-model/services/user_embedding_service.py",
+      "language": "python",
+      "sizeLines": 271
+    },
+    {
+      "path": "recommend-service/python-model/services/user_similarity_service.py",
+      "language": "python",
+      "sizeLines": 316
+    },
+    {
+      "path": "recommend-service/python-model/test_phase1_endpoints.py",
+      "language": "python",
+      "sizeLines": 147
+    },
+    {
+      "path": "recommend-service/python-model/utils/__init__.py",
+      "language": "python",
+      "sizeLines": 0
+    },
+    {
+      "path": "recommend-service/python-model/utils/feature_engineering.py",
+      "language": "python",
+      "sizeLines": 73
+    },
+    {
+      "path": "recommend-service/python-model/utils/similarity.py",
+      "language": "python",
+      "sizeLines": 85
+    },
+    {
+      "path": "user-service/.mvn/wrapper/maven-wrapper.properties",
+      "language": "properties",
+      "sizeLines": 19
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/UserServiceApplication.java",
+      "language": "java",
+      "sizeLines": 17
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/client/PostServiceClient.java",
+      "language": "java",
+      "sizeLines": 0
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/client/RecommendServiceClient.java",
+      "language": "java",
+      "sizeLines": 232
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/config/KafkaConfig.java",
+      "language": "java",
+      "sizeLines": 80
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/config/KafkaConsumerConfig.java",
+      "language": "java",
+      "sizeLines": 44
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/config/KafkaProducerConfig.java",
+      "language": "java",
+      "sizeLines": 58
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/config/Neo4jConfig.java",
+      "language": "java",
+      "sizeLines": 159
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/config/OpenApiConfig.java",
+      "language": "java",
+      "sizeLines": 39
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/config/RedisConfig.java",
+      "language": "java",
+      "sizeLines": 42
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/config/SecurityConfig.java",
+      "language": "java",
+      "sizeLines": 34
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/config/ValidationConfig.java",
+      "language": "java",
+      "sizeLines": 22
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/config/WebConfig.java",
+      "language": "java",
+      "sizeLines": 42
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/controller/AuthTestController.java",
+      "language": "java",
+      "sizeLines": 75
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/controller/BatchController.java",
+      "language": "java",
+      "sizeLines": 51
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/controller/CategoriesController.java",
+      "language": "java",
+      "sizeLines": 67
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/controller/CollegeController.java",
+      "language": "java",
+      "sizeLines": 52
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/controller/EnhancedUserController.java",
+      "language": "java",
+      "sizeLines": 800
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/controller/FacultyController.java",
+      "language": "java",
+      "sizeLines": 59
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/controller/GenderController.java",
+      "language": "java",
+      "sizeLines": 52
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/controller/MajorController.java",
+      "language": "java",
+      "sizeLines": 59
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/controller/UserController.java",
+      "language": "java",
+      "sizeLines": 438
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/controller/UserSyncController.java",
+      "language": "java",
+      "sizeLines": 173
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/ActivityDTO.java",
+      "language": "java",
+      "sizeLines": 55
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/AuthContextDTO.java",
+      "language": "java",
+      "sizeLines": 31
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/AuthorDTO.java",
+      "language": "java",
+      "sizeLines": 19
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/BatchDTO.java",
+      "language": "java",
+      "sizeLines": 14
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/BatchInfo.java",
+      "language": "java",
+      "sizeLines": 20
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/CategoryDTO.java",
+      "language": "java",
+      "sizeLines": 128
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/CollegeDTO.java",
+      "language": "java",
+      "sizeLines": 18
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/CollegeWithHierarchyDTO.java",
+      "language": "java",
+      "sizeLines": 17
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/FacultyDTO.java",
+      "language": "java",
+      "sizeLines": 25
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/FacultyWithMajorsDTO.java",
+      "language": "java",
+      "sizeLines": 18
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/FriendCandidateResponseDTO.java",
+      "language": "java",
+      "sizeLines": 43
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/FriendRequestDTO.java",
+      "language": "java",
+      "sizeLines": 27
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/FriendSuggestionDTO.java",
+      "language": "java",
+      "sizeLines": 60
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/FriendsDTO.java",
+      "language": "java",
+      "sizeLines": 44
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/GenderDTO.java",
+      "language": "java",
+      "sizeLines": 19
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/Info.java",
+      "language": "java",
+      "sizeLines": 21
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/LecturerProfileUpdateRequest.java",
+      "language": "java",
+      "sizeLines": 39
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/MajorDTO.java",
+      "language": "java",
+      "sizeLines": 23
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/PageResponse.java",
+      "language": "java",
+      "sizeLines": 40
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/RelationshipFilterDTO.java",
+      "language": "java",
+      "sizeLines": 34
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/StudentProfileUpdateRequest.java",
+      "language": "java",
+      "sizeLines": 40
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/UserAcademicProfileDTO.java",
+      "language": "java",
+      "sizeLines": 24
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/UserDTO.java",
+      "language": "java",
+      "sizeLines": 37
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/UserProfileDTO.java",
+      "language": "java",
+      "sizeLines": 76
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/UserProjection.java",
+      "language": "java",
+      "sizeLines": 51
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/UserQueryResultDTO.java",
+      "language": "java",
+      "sizeLines": 78
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/UserSearchDTO.java",
+      "language": "java",
+      "sizeLines": 48
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/dto/UserUpdateDTO.java",
+      "language": "java",
+      "sizeLines": 33
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/entity/AcademicEntity.java",
+      "language": "java",
+      "sizeLines": 30
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/entity/BatchEntity.java",
+      "language": "java",
+      "sizeLines": 57
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/entity/CollegeEntity.java",
+      "language": "java",
+      "sizeLines": 70
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/entity/DegreeEntity.java",
+      "language": "java",
+      "sizeLines": 31
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/entity/FacultyEntity.java",
+      "language": "java",
+      "sizeLines": 71
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/entity/GenderEntity.java",
+      "language": "java",
+      "sizeLines": 65
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/entity/MajorEntity.java",
+      "language": "java",
+      "sizeLines": 71
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/entity/PositionEntity.java",
+      "language": "java",
+      "sizeLines": 29
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/entity/UniversityEntity.java",
+      "language": "java",
+      "sizeLines": 89
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/entity/UserEntity.java",
+      "language": "java",
+      "sizeLines": 271
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/enums/Role.java",
+      "language": "java",
+      "sizeLines": 47
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/event/UserCreatedEvent.java",
+      "language": "java",
+      "sizeLines": 41
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/event/UserDeletedEvent.java",
+      "language": "java",
+      "sizeLines": 13
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/event/UserProfileUpdatedEvent.java",
+      "language": "java",
+      "sizeLines": 18
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/event/UserRelationshipChangedEvent.java",
+      "language": "java",
+      "sizeLines": 15
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/event/UserUpdatedEvent.java",
+      "language": "java",
+      "sizeLines": 51
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/exception/DuplicateResourceException.java",
+      "language": "java",
+      "sizeLines": 11
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/exception/ErrorResponse.java",
+      "language": "java",
+      "sizeLines": 24
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/exception/GlobalExceptionHandler.java",
+      "language": "java",
+      "sizeLines": 149
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/exception/InvalidOperationException.java",
+      "language": "java",
+      "sizeLines": 11
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/exception/SecurityExceptionHandler.java",
+      "language": "java",
+      "sizeLines": 73
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/exception/UserMappingException.java",
+      "language": "java",
+      "sizeLines": 19
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/exception/UserNotFoundException.java",
+      "language": "java",
+      "sizeLines": 11
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/mapper/ProjectionMapper.java",
+      "language": "java",
+      "sizeLines": 128
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/mapper/UserMapper.java",
+      "language": "java",
+      "sizeLines": 147
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/repository/AcademicRepository.java",
+      "language": "java",
+      "sizeLines": 15
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/repository/BatchRepository.java",
+      "language": "java",
+      "sizeLines": 37
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/repository/CollegeRepository.java",
+      "language": "java",
+      "sizeLines": 36
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/repository/DegreeRepository.java",
+      "language": "java",
+      "sizeLines": 16
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/repository/FacultyRepository.java",
+      "language": "java",
+      "sizeLines": 54
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/repository/GenderRepository.java",
+      "language": "java",
+      "sizeLines": 30
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/repository/MajorRepository.java",
+      "language": "java",
+      "sizeLines": 43
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/repository/PositionRepository.java",
+      "language": "java",
+      "sizeLines": 16
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/repository/UniversityRepository.java",
+      "language": "java",
+      "sizeLines": 27
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/repository/UserRepository.java",
+      "language": "java",
+      "sizeLines": 287
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/security/AuthenticatedUser.java",
+      "language": "java",
+      "sizeLines": 39
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/security/AuthenticationInterceptor.java",
+      "language": "java",
+      "sizeLines": 64
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/security/SecurityContextHolder.java",
+      "language": "java",
+      "sizeLines": 57
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/security/annotation/RequireAuth.java",
+      "language": "java",
+      "sizeLines": 23
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/security/aspect/AuthorizationAspect.java",
+      "language": "java",
+      "sizeLines": 85
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/service/BatchService.java",
+      "language": "java",
+      "sizeLines": 59
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/service/CategoryService.java",
+      "language": "java",
+      "sizeLines": 389
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/service/CollegeService.java",
+      "language": "java",
+      "sizeLines": 62
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/service/FacultyService.java",
+      "language": "java",
+      "sizeLines": 94
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/service/GenderService.java",
+      "language": "java",
+      "sizeLines": 61
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/service/MajorService.java",
+      "language": "java",
+      "sizeLines": 89
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/service/SocialGraphService.java",
+      "language": "java",
+      "sizeLines": 429
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/service/UserEventListener.java",
+      "language": "java",
+      "sizeLines": 83
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/service/UserEventPublisher.java",
+      "language": "java",
+      "sizeLines": 131
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/service/UserService.java",
+      "language": "java",
+      "sizeLines": 1076
+    },
+    {
+      "path": "user-service/src/main/java/com/ctuconnect/service/UserSyncService.java",
+      "language": "java",
+      "sizeLines": 180
+    },
+    {
+      "path": "user-service/src/main/resources/application-docker.properties",
+      "language": "properties",
+      "sizeLines": 53
+    },
+    {
+      "path": "user-service/src/main/resources/application.properties",
+      "language": "properties",
+      "sizeLines": 108
+    },
+    {
+      "path": "user-service/src/test/java/com/ctuconnect/UserServiceApplicationTests.java",
+      "language": "java",
+      "sizeLines": 21
+    },
+    {
+      "path": "user-service/src/test/java/com/ctuconnect/controller/UserControllerTest.java",
+      "language": "java",
+      "sizeLines": 125
+    },
+    {
+      "path": "user-service/src/test/java/com/ctuconnect/service/UserServiceTest.java",
+      "language": "java",
+      "sizeLines": 210
+    },
+    {
+      "path": "user-service/src/test/resources/application-test.properties",
+      "language": "properties",
+      "sizeLines": 21
+    }
+  ],
+  "totalFiles": 545,
+  "estimatedComplexity": "very-large"
+}
