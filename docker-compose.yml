@@ -74,7 +74,7 @@ services:
       - ./database/neo4j/import:/import
       - ./database/neo4j/init.sh:/docker-entrypoint-initdb.d/init.sh
     environment:
-      - NEO4J_AUTH=neo4j/password
+      - NEO4J_AUTH=${NEO4J_AUTH}
       - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
       - NEO4J_dbms_security_procedures_unrestricted=apoc.*
       - NEO4J_dbms_security_procedures_allowlist=apoc.*
@@ -225,8 +225,8 @@ services:
     container_name: ctu-recommend-postgres
     environment:
       POSTGRES_DB: recommend_db
-      POSTGRES_USER: recommend_user
-      POSTGRES_PASSWORD: recommend_pass
+      POSTGRES_USER: ${RECOMMEND_DB_USER}
+      POSTGRES_PASSWORD: ${RECOMMEND_DB_PASSWORD}
       PGDATA: /var/lib/postgresql/data/pgdata
     ports:
       - "5435:5432"
@@ -236,7 +236,7 @@ services:
     networks:
       - ctuconnect-network
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U recommend_user -d recommend_db"]
+      test: ["CMD-SHELL", "pg_isready -U ${RECOMMEND_DB_USER} -d recommend_db"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -248,7 +248,7 @@ services:
     container_name: ctu-recommend-redis
     ports:
       - "6380:6379"
-    command: redis-server --appendonly yes --requirepass recommend_redis_pass
+    command: redis-server --appendonly yes --requirepass ${RECOMMEND_REDIS_PASSWORD}
     volumes:
       - recommend-redis-data:/data
     networks:
@@ -278,8 +278,8 @@ services:
       - LOG_LEVEL=INFO
       - WORKERS=1
       - PYTHONUNBUFFERED=1
-      - DATABASE_URL=postgresql://recommend_user:recommend_pass@recommend-postgres:5432/recommend_db
-      - REDIS_URL=redis://:recommend_redis_pass@recommend-redis:6379/0
+      - DATABASE_URL=postgresql://${RECOMMEND_DB_USER}:${RECOMMEND_DB_PASSWORD}@recommend-postgres:5432/recommend_db
+      - REDIS_URL=redis://:${RECOMMEND_REDIS_PASSWORD}@recommend-redis:6379/0
     volumes:
       # Mount entire python-model directory for live code reload
       - ./recommend-service/python-model:/app:cached

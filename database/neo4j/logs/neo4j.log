@@ -3678,3 +3678,26 @@ The system database supports a restricted set of Cypher clauses. The supported c
 2025-12-15 02:04:49.458+0000 INFO  name: system
 2025-12-15 02:04:49.484+0000 INFO  creationDate: 2025-12-02T18:30:56.811Z
 2025-12-15 02:04:49.488+0000 INFO  Started.
+2026-03-23 14:28:59.986+0000 INFO  Logging config in use: Embedded default config 'default-user-logs.xml'
+2026-03-23 14:29:00.017+0000 WARN  Use of deprecated setting 'dbms.directories.import'. It is replaced by 'server.directories.import'.
+2026-03-23 14:29:00.024+0000 WARN  Use of deprecated setting 'dbms.directories.plugins'. It is replaced by 'server.directories.plugins'.
+2026-03-23 14:29:00.032+0000 WARN  Use of deprecated setting 'dbms.default_database'. It is replaced by 'initial.dbms.default_database'.
+2026-03-23 14:29:00.036+0000 WARN  Use of deprecated setting 'dbms.recovery.fail_on_missing_files'. It is replaced by 'db.recovery.fail_on_missing_files'.
+2026-03-23 14:29:00.039+0000 WARN  Use of deprecated setting 'dbms.memory.pagecache.size'. It is replaced by 'server.memory.pagecache.size'.
+2026-03-23 14:29:00.041+0000 WARN  Use of deprecated setting 'dbms.memory.heap.max_size'. It is replaced by 'server.memory.heap.max_size'.
+2026-03-23 14:29:00.043+0000 WARN  Use of deprecated setting 'dbms.memory.heap.initial_size'. It is replaced by 'server.memory.heap.initial_size'.
+2026-03-23 14:29:00.045+0000 WARN  Unrecognized setting. No declared setting with name: dbms.edition.
+2026-03-23 14:29:00.050+0000 INFO  Starting...
+2026-03-23 14:29:01.916+0000 INFO  This instance is ServerId{0dd22cc2} (0dd22cc2-f380-40b7-9d41-ab96fc6e6f44)
+2026-03-23 14:29:03.554+0000 INFO  ======== Neo4j 5.13.0 ========
+2026-03-23 14:29:15.536+0000 INFO  Called db.clearQueryCaches(): Query cache already empty.
+2026-03-23 14:29:15.587+0000 INFO  Bolt enabled on 0.0.0.0:7687.
+2026-03-23 14:29:16.370+0000 INFO  HTTP enabled on 0.0.0.0:7474.
+2026-03-23 14:29:16.372+0000 INFO  Remote interface available at http://localhost:7474/
+2026-03-23 14:29:16.376+0000 INFO  id: 4EC9EA2C5174A02A488212A8BABC6720602061C5B6A7569F22651232BA02DD4C
+2026-03-23 14:29:16.377+0000 INFO  name: system
+2026-03-23 14:29:16.378+0000 INFO  creationDate: 2025-12-02T18:30:56.811Z
+2026-03-23 14:29:16.378+0000 INFO  Started.
+2026-03-23 14:53:10.245+0000 INFO  Neo4j Server shutdown initiated by request
+2026-03-23 14:53:10.302+0000 INFO  Stopping...
+2026-03-23 14:53:16.871+0000 INFO  Stopped.
