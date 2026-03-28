@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.Collections;
 
@@ -13,8 +14,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Unit tests for JwtService.
  *
- * JwtService has a hardcoded secret key and no Spring context dependencies,
- * so these tests run without @SpringBootTest.
+ * JwtService uses @Value fields; this test sets those values explicitly
+ * to run without loading a full Spring context.
  */
 class JwtServiceTest {
 
@@ -25,6 +26,9 @@ class JwtServiceTest {
     @BeforeEach
     void setUp() {
         jwtService = new JwtService();
+        ReflectionTestUtils.setField(jwtService, "jwtSecret", "XpExu6h1RJoY1qFZyLVzJbor/aYutNR2AD86ZM/tKqc=");
+        ReflectionTestUtils.setField(jwtService, "jwtExpirationMs", 86400000L);
+        ReflectionTestUtils.setField(jwtService, "refreshExpirationMs", 604800000L);
 
         userDetails = User.withUsername("test@ctu.edu.vn")
                 .password("irrelevant")

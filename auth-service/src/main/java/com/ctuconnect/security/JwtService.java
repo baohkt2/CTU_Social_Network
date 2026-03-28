@@ -1,20 +1,21 @@
 package com.ctuconnect.security;
 
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.io.Decoders;
-import io.jsonwebtoken.security.Keys;
-// Important for handling exceptions in 0.12.x+
-import io.jsonwebtoken.security.SignatureException; // Use this for invalid signatures
-import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.UnsupportedJwtException;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.io.DecodingException;
+import io.jsonwebtoken.security.Keys;
+import io.jsonwebtoken.security.SignatureException;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
-import java.security.Key; // java.security.Key is correct
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,6 +23,15 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
+
+    @Value("${jwt.secret:XpExu6h1RJoY1qFZyLVzJbor/aYutNR2AD86ZM/tKqc=}")
+    private String jwtSecret;
+
+    @Value("${jwt.expiration.ms:86400000}")
+    private long jwtExpirationMs;
+
+    @Value("${jwt.refresh.expiration.ms:604800000}")
+    private long refreshExpirationMs;
 
 
     public String extractUsername(String token) {
@@ -58,15 +68,11 @@ public class JwtService {
             Map<String, Object> extraClaims,
             UserDetails userDetails
     ) {
-        // 24 giờ (tính bằng milliseconds)
-        long jwtExpiration = 86400000;
-        return buildToken(extraClaims, userDetails, jwtExpiration);
+        return buildToken(extraClaims, userDetails, jwtExpirationMs);
     }
 
     public String generateRefreshToken(UserDetails userDetails) {
-        // 7 ngày (tính bằng milliseconds)
-        long refreshExpiration = 604800000;
-        return buildToken(new HashMap<>(), userDetails, refreshExpiration);
+        return buildToken(new HashMap<>(), userDetails, refreshExpirationMs);
     }
 
     private String buildToken(
@@ -97,19 +103,19 @@ public class JwtService {
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts.parser() // Corrected: parser() instead of parserBuilder()
-                .verifyWith((SecretKey) getSignInKey()) // Corrected: verifyWith() instead of setSigningKey()
-                .build() // This build() call is still necessary after verifyWith()
-                .parseSignedClaims(token) // Corrected: parseSignedClaims() instead of parseClaimsJws()
-                .getPayload(); // Corrected: getPayload() instead of getBody()
+        return Jwts.parser()
+                .verifyWith(getSignInKey())
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
     }
 
-    public boolean isTokenValid(String token) { // Simplified validation for reusability if userDetails not needed
+    public boolean isTokenValid(String token) {
         try {
             Jwts.parser()
-                    .verifyWith((SecretKey) getSignInKey())
+                    .verifyWith(getSignInKey())
                     .build()
-                    .parseSignedClaims(token); // Just parsing to see if it's valid
+                    .parseSignedClaims(token);
             return true;
         } catch (SignatureException e) {
             System.err.println("Invalid JWT signature: " + e.getMessage());
@@ -126,15 +132,14 @@ public class JwtService {
     }
 
 
-    private Key getSignInKey() {
-        // Ensure jwtSecret is Base64 encoded in application.properties/yml
-        // Sử dụng giá trị cố định thay vì đọc từ file cấu hình
-        String secretKey = "XpExu6h1RJoY1qFZyLVzJbor/aYutNR2AD86ZM/tKqc=";
-        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
+    private SecretKey getSignInKey() {
+        byte[] keyBytes;
+        try {
+            keyBytes = Decoders.BASE64.decode(jwtSecret);
+        } catch (DecodingException ignored) {
+            keyBytes = jwtSecret.getBytes(StandardCharsets.UTF_8);
+        }
+
         return Keys.hmacShaKeyFor(keyBytes);
     }
-
-    // Removed getJwtFromRequest and getAuthentication as they seem to belong in a filter/util class,
-    // not directly in JwtService which focuses on token operations.
-    // If you need them here, ensure all relevant imports are present.
 }
