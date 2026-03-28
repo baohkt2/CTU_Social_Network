@@ -1,6 +1,12 @@
 version: 2
 updates:
   - package-ecosystem: "maven"
+    directory: "/shared-security"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+
+  - package-ecosystem: "maven"
     directory: "/api-gateway"
     schedule:
       interval: "weekly"

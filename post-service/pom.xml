@@ -94,6 +94,13 @@
             <artifactId>aspectjweaver</artifactId>
             <version>1.9.22</version>
         </dependency>
+
+        <!-- Shared security library (AuthenticatedUser, @RequireAuth, AuthorizationAspect, etc.) -->
+        <dependency>
+            <groupId>vn.ctu.edu</groupId>
+            <artifactId>shared-security</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
    
 

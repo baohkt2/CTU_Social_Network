@@ -1,48 +1,49 @@
 package com.ctuconnect.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * Centralised CORS policy for the entire platform.
+ *
+ * All services behind the gateway must NOT define their own CORS configuration;
+ * doing so would produce duplicate Access-Control-Allow-Origin headers and
+ * cause browser preflight failures.
+ *
+ * Allowed origins are driven by the CORS_ALLOWED_ORIGINS environment variable
+ * (comma-separated). Defaults to localhost dev ports when the variable is absent.
+ */
 @Configuration
 public class CorsConfig {
 
-    // DISABLED: CORS is handled by individual services (SecurityConfig)
-    // This prevents duplicate CORS headers which causes browser errors:
-    // "The 'Access-Control-Allow-Origin' header contains multiple values"
-    
-    // If you need to enable Gateway CORS again:
-    // 1. Uncomment the bean below
-    // 2. Remove CORS configuration from all service SecurityConfig files
-    
-    /*
+    @Value("${cors.allowed-origins:http://localhost:3000,http://localhost:3001}")
+    private String allowedOriginsRaw;
+
     @Bean
     public CorsWebFilter corsWebFilter() {
-        CorsConfiguration configuration = new CorsConfiguration();
+        CorsConfiguration config = new CorsConfiguration();
 
-        // Allow specific origins
-        configuration.addAllowedOrigin("http://localhost:3000"); // Client frontend
-        configuration.addAllowedOrigin("http://localhost:3001"); // Admin frontend
-        configuration.addAllowedOrigin("http://localhost:8090"); // API Gateway
-        
-        // Allow all headers
-        configuration.addAllowedHeader("*");
+        List<String> origins = Arrays.stream(allowedOriginsRaw.split(","))
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .toList();
+        config.setAllowedOrigins(origins);
 
-        // Allow all methods
-        configuration.addAllowedMethod("*");
-
-        // Allow credentials
-        configuration.setAllowCredentials(true);
-
-        // Set max age for preflight requests
-        configuration.setMaxAge(3600L);
+        config.setAllowedHeaders(List.of("*"));
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
+        config.setAllowCredentials(true);
+        config.setMaxAge(3600L);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
+        source.registerCorsConfiguration("/**", config);
 
         return new CorsWebFilter(source);
     }
-    */
 }

@@ -125,6 +125,13 @@
 			<version>4.9.2</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Shared security library (AuthenticatedUser, @RequireAuth, AuthorizationAspect, etc.) -->
+		<dependency>
+			<groupId>vn.ctu.edu</groupId>
+			<artifactId>shared-security</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
