@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Message } from '../../services/chatService';
 import { useChat } from '../../contexts/ChatContext';
+import { useAuth } from '../../contexts/AuthContext';
 import { formatDistanceToNow } from 'date-fns';
 import { vi } from 'date-fns/locale';
 import {
@@ -27,14 +28,14 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
   isMobile
 }) => {
   const { addReaction, removeReaction } = useChat();
+  const { user } = useAuth();
   const [showActions, setShowActions] = useState(false);
   const [showReactions, setShowReactions] = useState(false);
 
-  // Determine if this is current user's message (you'll need to get current user ID)
-  const isOwnMessage = false; // TODO: Compare with current user ID
+  const isOwnMessage = !!user && message.senderId === user.id;
 
   const handleReaction = async (emoji: string) => {
-    const existingReaction = message.reactions?.find((r: { userId: string; emoji: string }) => r.userId === 'currentUserId' && r.emoji === emoji);
+    const existingReaction = message.reactions?.find((r: { userId: string; emoji: string }) => r.userId === user?.id && r.emoji === emoji);
 
     if (existingReaction) {
       await removeReaction(message.id);
@@ -76,7 +77,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
             key={emoji}
             onClick={() => handleReaction(emoji)}
             className={`inline-flex items-center px-2 py-1 rounded-full text-xs border ${
-              (reactions as any[]).some((r: { userId: string }) => r.userId === 'currentUserId')
+              (reactions as any[]).some((r: { userId: string }) => r.userId === user?.id)
                 ? 'bg-blue-100 border-blue-300 text-blue-700'
                 : 'bg-gray-100 border-gray-300 text-gray-700 hover:bg-gray-200'
             }`}
