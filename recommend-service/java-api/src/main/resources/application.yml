@@ -103,7 +103,7 @@ server:
 
 # JWT Configuration (must match auth-service)
 jwt:
-  secret: ${JWT_SECRET:XpExu6h1RJoY1qFZyLVzJbor/aYutNR2AD86ZM/tKqc=}
+  secret: ${JWT_SECRET:change_this_secret_in_production}
   expiration: ${JWT_EXPIRATION:86400000}
   refresh-expiration: ${JWT_REFRESH_EXPIRATION:604800000}
 

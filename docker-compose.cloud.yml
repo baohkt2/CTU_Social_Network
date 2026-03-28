@@ -1,0 +1,81 @@
+# ============================================
+# Docker Compose Override - Cloud Database Mode
+# ============================================
+# Usage:
+#   docker compose -f docker-compose.yml -f docker-compose.cloud.yml --env-file .env.cloud up --build
+#
+# This override file:
+#   1. Disables all local database containers (scales to 0)
+#   2. Switches all services to use 'cloud' Spring profile
+#   3. Keeps Kafka local as specified
+#   4. Updates recommend-python to use cloud DB URLs
+# ============================================
+
+services:
+  # ====== DISABLE LOCAL DATABASE CONTAINERS ======
+  # Scale to 0 replicas to prevent them from starting
+  
+  auth_db:
+    deploy:
+      replicas: 0
+
+  media_db:
+    deploy:
+      replicas: 0
+
+  post_db:
+    deploy:
+      replicas: 0
+
+  chat_db:
+    deploy:
+      replicas: 0
+
+  neo4j:
+    deploy:
+      replicas: 0
+
+  redis:
+    deploy:
+      replicas: 0
+
+  recommend-postgres:
+    deploy:
+      replicas: 0
+
+  recommend-redis:
+    deploy:
+      replicas: 0
+
+  # ====== UPDATE SERVICES TO USE CLOUD PROFILE ======
+
+  api-gateway:
+    environment:
+      - SPRING_PROFILES_ACTIVE=cloud
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+
+  # Python Inference Service - Use cloud databases
+  recommend-python:
+    environment:
+      - MODEL_PATH=/app/model/academic_posts_model
+      - LOG_LEVEL=INFO
+      - WORKERS=1
+      - PYTHONUNBUFFERED=1
+      - DATABASE_URL=${RECOMMEND_DB_URL_PYTHON}
+      - REDIS_URL=${RECOMMEND_REDIS_URL}
+    depends_on:
+      kafka:
+        condition: service_healthy
+
+  # Recommendation Service (Java) - Cloud profile, remove local DB dependencies
+  recommendation-service:
+    environment:
+      - SPRING_PROFILES_ACTIVE=cloud
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+      recommend-python:
+        condition: service_healthy

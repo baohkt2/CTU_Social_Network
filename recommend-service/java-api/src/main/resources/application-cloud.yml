@@ -1,0 +1,59 @@
+# ============================================
+# Recommendation Service - Cloud Profile
+# DB: Neon PostgreSQL #3 (ep-long-poetry)
+# Graph: Neo4j Aura (1ff6623e)
+# Redis: Upstash #2 (possible-oyster)
+# Kafka: Local Docker
+# ============================================
+
+spring:
+  datasource:
+    url: ${RECOMMEND_DB_URL}
+    username: ${RECOMMEND_DB_USER}
+    password: ${RECOMMEND_DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 2
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  neo4j:
+    uri: ${NEO4J_URI}
+    authentication:
+      username: ${NEO4J_USERNAME}
+      password: ${NEO4J_PASSWORD}
+
+  data:
+    redis:
+      host: ${RECOMMEND_REDIS_HOST}
+      port: ${RECOMMEND_REDIS_PORT:6379}
+      password: ${RECOMMEND_REDIS_PASSWORD}
+      ssl:
+        enabled: true
+
+  kafka:
+    bootstrap-servers: kafka:29092
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+  instance:
+    hostname: recommendation-service
+    prefer-ip-address: true
+
+server:
+  port: 8095
+
+# JWT Configuration (must match auth-service)
+jwt:
+  secret: ${JWT_SECRET:change_this_secret_in_production}
+  expiration: ${JWT_EXPIRATION:86400000}
+
+recommendation:
+  nlp:
+    phobert-service-url: http://phobert-nlp:8096
+  python-service:
+    url: http://recommend-python:8000

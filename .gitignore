@@ -139,3 +139,6 @@ model/
 coverage/
 .nyc_output/
 test-results/
+.env.cloud.example
+Neo4j-crendital.txt
+.env.cloud
