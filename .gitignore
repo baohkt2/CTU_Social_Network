@@ -135,3 +135,5 @@ model/
 coverage/
 .nyc_output/
 test-results/
+.env.cloud
+CTU-Connect-Detailed-Improvement-Plan.md
