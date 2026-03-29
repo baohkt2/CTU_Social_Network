@@ -47,6 +47,7 @@ public class RateLimiterConfig {
      * Limiter for authenticated API routes.
      */
     @Bean
+    @Primary
     public RedisRateLimiter authenticatedRateLimiter() {
         return new RedisRateLimiter(50, 100, 1);
     }

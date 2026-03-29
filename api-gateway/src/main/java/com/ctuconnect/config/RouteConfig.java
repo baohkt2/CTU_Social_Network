@@ -18,8 +18,8 @@ public class RouteConfig {
     private final KeyResolver ipKeyResolver;
 
     public RouteConfig(JwtAuthenticationFilter jwtAuthenticationFilter,
-                       RedisRateLimiter publicRateLimiter,
-                       RedisRateLimiter authenticatedRateLimiter,
+                       @org.springframework.beans.factory.annotation.Qualifier("publicRateLimiter") RedisRateLimiter publicRateLimiter,
+                       @org.springframework.beans.factory.annotation.Qualifier("authenticatedRateLimiter") RedisRateLimiter authenticatedRateLimiter,
                        KeyResolver ipKeyResolver) {
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
         this.publicRateLimiter = publicRateLimiter;

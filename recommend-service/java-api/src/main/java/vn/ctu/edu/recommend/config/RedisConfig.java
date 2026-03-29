@@ -39,11 +39,17 @@ public class RedisConfig {
     @Value("${spring.data.redis.password:recommend_redis_pass}")
     private String redisPassword;
 
+    @Value("${spring.data.redis.username:}")
+    private String redisUsername;
+
     @Value("${spring.data.redis.database:0}")
     private int redisDatabase;
 
     @Value("${spring.data.redis.timeout:3000ms}")
     private Duration redisTimeout;
+
+    @Value("${spring.data.redis.ssl.enabled:false}")
+    private boolean redisSslEnabled;
 
     @Bean
     public LettuceConnectionFactory redisConnectionFactory() {
@@ -51,6 +57,9 @@ public class RedisConfig {
         RedisStandaloneConfiguration redisConfig = new RedisStandaloneConfiguration();
         redisConfig.setHostName(redisHost);
         redisConfig.setPort(redisPort);
+        if (redisUsername != null && !redisUsername.isBlank()) {
+            redisConfig.setUsername(redisUsername);
+        }
         redisConfig.setPassword(redisPassword);
         redisConfig.setDatabase(redisDatabase);
 
@@ -67,10 +76,16 @@ public class RedisConfig {
             .build();
 
         // Lettuce client configuration
-        LettuceClientConfiguration clientConfig = LettuceClientConfiguration.builder()
-            .clientOptions(clientOptions)
-            .commandTimeout(redisTimeout)
-            .build();
+        LettuceClientConfiguration.LettuceClientConfigurationBuilder clientConfigBuilder =
+            LettuceClientConfiguration.builder()
+                .clientOptions(clientOptions)
+                .commandTimeout(redisTimeout);
+
+        if (redisSslEnabled) {
+            clientConfigBuilder.useSsl();
+        }
+
+        LettuceClientConfiguration clientConfig = clientConfigBuilder.build();
 
         return new LettuceConnectionFactory(redisConfig, clientConfig);
     }

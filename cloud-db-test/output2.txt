@@ -1,0 +1,16 @@
+==================================================
+   Testing Cloud Database Connections
+==================================================
+
+Γ¥î Post DB connection failed: querySrv ECONNREFUSED _mongodb._tcp.post-db.nvljvcw.mongodb.net
+Γ¥î Chat DB connection failed: querySrv ECONNREFUSED _mongodb._tcp.chat-db.khgy7ff.mongodb.net
+Γ£à Global Redis (Upstash) connected!
+Γ£à Neo4j Aura connected!
+Γ£à Recommend Redis (Upstash) connected!
+Γ£à Auth DB (Neon PostgreSQL) connected!
+Γ£à Recommend DB (Neon PostgreSQL) connected!
+Γ£à Media DB (Neon PostgreSQL) connected!
+
+==================================================
+   Test Completed
+==================================================
