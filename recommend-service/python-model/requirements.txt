@@ -6,7 +6,7 @@ pydantic-settings==2.1.0
 python-multipart==0.0.6
 
 # Machine Learning & NLP
-transformers==4.35.0
+transformers==5.4.0
 torch==2.1.0
 torchvision==0.16.0
 torchaudio==2.1.0
