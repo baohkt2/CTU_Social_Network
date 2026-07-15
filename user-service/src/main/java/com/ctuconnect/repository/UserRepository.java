@@ -259,10 +259,10 @@ public interface UserRepository extends Neo4jRepository<UserEntity, String> {
         OPTIONAL MATCH (u)-[r:ENROLLED_IN]->(:Major)
         DELETE r
         WITH u
-        MATCH (m:Major {code: $majorCode})
+        MATCH (m:Major {name: $majorName})
         MERGE (u)-[:ENROLLED_IN]->(m)
         """)
-    void updateUserMajor(@Param("userId") String userId, @Param("majorCode") String majorCode);
+    void updateUserMajor(@Param("userId") String userId, @Param("majorName") String majorName);
     
     @Query("""
         MATCH (u:User {id: $userId})
@@ -272,7 +272,7 @@ public interface UserRepository extends Neo4jRepository<UserEntity, String> {
         MATCH (b:Batch {year: $batchYear})
         MERGE (u)-[:IN_BATCH]->(b)
         """)
-    void updateUserBatch(@Param("userId") String userId, @Param("batchYear") String batchYear);
+    void updateUserBatch(@Param("userId") String userId, @Param("batchYear") Integer batchYear);
     
     @Query("""
         MATCH (u:User {id: $userId})

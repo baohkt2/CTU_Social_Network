@@ -170,20 +170,22 @@ public class UserService {
 
         // Update academic information using custom queries that properly handle relationships
         if (updateDTO.getMajorCode() != null && !updateDTO.getMajorCode().isEmpty()) {
-            // Verify major exists
-            majorRepository.findByCode(updateDTO.getMajorCode())
-                .orElseThrow(() -> new UserNotFoundException("Major not found with code: " + updateDTO.getMajorCode()));
-            // Update relationship
-            userRepository.updateUserMajor(userId, updateDTO.getMajorCode());
-            log.info("Updated major relationship for userId: {} to majorCode: {}", userId, updateDTO.getMajorCode());
+            
+            var major = majorRepository.findByCode(updateDTO.getMajorCode())
+                .or(() -> majorRepository.findByName(updateDTO.getMajorCode()))
+                .orElseThrow(() -> new UserNotFoundException("Major not found with code/name: " + updateDTO.getMajorCode()));
+                
+            // Update relationship using the actual name of the major in the database
+            userRepository.updateUserMajor(userId, major.getName());
+            log.info("Updated major relationship for userId: {} to major: {}", userId, major.getName());
         }
 
         if (updateDTO.getBatchYear() != null && !updateDTO.getBatchYear().isEmpty()) {
-            // Verify batch exists
-            batchRepository.findByYear(updateDTO.getBatchYear())
+            Integer batchYearInt = Integer.valueOf(updateDTO.getBatchYear());
+            batchRepository.findByYear(batchYearInt)
                 .orElseThrow(() -> new UserNotFoundException("Batch not found: " + updateDTO.getBatchYear()));
             // Update relationship
-            userRepository.updateUserBatch(userId, updateDTO.getBatchYear());
+            userRepository.updateUserBatch(userId, batchYearInt);
             log.info("Updated batch relationship for userId: {} to batchYear: {}", userId, updateDTO.getBatchYear());
         }
 
@@ -599,8 +601,14 @@ public class UserService {
     @Transactional(readOnly = true)
     public java.util.Set<String> getSameFacultyUserIds(@NotBlank String userId) {
         log.info("Getting same faculty user IDs for userId: {}", userId);
-        var user = userRepository.findById(userId)
-            .orElseThrow(() -> new UserNotFoundException("User not found with ID: " + userId));
+        UserEntity user = null;
+        try {
+            user = userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("User not found with ID: " + userId));
+        } catch (Exception e) {
+            log.error("Error finding user by ID: ", e);
+            throw e;
+        }
         
         if (user.getMajor() == null || user.getMajor().getFaculty() == null) {
             return new java.util.HashSet<>();
@@ -975,8 +983,8 @@ public class UserService {
 
     private boolean isSameBatch(UserEntity u1, UserEntity u2) {
         if (u1.getBatch() == null || u2.getBatch() == null) return false;
-        String b1 = u1.getBatch().getYear();
-        String b2 = u2.getBatch().getYear();
+        Integer b1 = u1.getBatch().getYear();
+        Integer b2 = u2.getBatch().getYear();
         return b1 != null && b1.equals(b2);
     }
 

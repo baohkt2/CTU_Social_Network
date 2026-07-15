@@ -255,17 +255,10 @@ public class UserEntity {
     }
 
     public String getBatchId() {
-        return batch != null ? batch.getYear() : null;
+        return batch != null && batch.getYear() != null ? String.valueOf(batch.getYear()) : null;
     }
 
     public Integer getBatchYear() {
-        if (batch != null && batch.getYear() != null) {
-            try {
-                return Integer.parseInt(batch.getYear());
-            } catch (NumberFormatException e) {
-                return null;
-            }
-        }
-        return null;
+        return batch != null ? batch.getYear() : null;
     }
 }

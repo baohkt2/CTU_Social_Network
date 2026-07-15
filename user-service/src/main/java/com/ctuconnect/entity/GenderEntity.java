@@ -33,9 +33,7 @@ public class GenderEntity {
     @Size(max = 100, message = "Description must not exceed 100 characters")
     private String description;
 
-    @Relationship(type = "HAS_GENDER", direction = Relationship.Direction.INCOMING)
-    @Builder.Default
-    private Set<UserEntity> users = new HashSet<>();
+
 
     // Safe getter methods
     public String getName() {
@@ -46,9 +44,6 @@ public class GenderEntity {
         return description != null ? description : "";
     }
 
-    public Set<UserEntity> getUsers() {
-        return users != null ? users : new HashSet<>();
-    }
 
     @Override
     public boolean equals(Object o) {

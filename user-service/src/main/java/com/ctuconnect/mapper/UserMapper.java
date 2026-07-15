@@ -32,7 +32,7 @@ public class UserMapper {
             .faculty(user.getMajor() != null && user.getMajor().getFaculty() != null ?
                     user.getMajor().getFaculty().getName() : null)
             .major(user.getMajor() != null ? user.getMajor().getName() : null)
-            .batch(user.getBatch() != null ? user.getBatch().getYear() : null)
+            .batch(user.getBatch() != null ? String.valueOf(user.getBatch().getYear()) : null)
             .gender(user.getGender() != null ? user.getGender().getName() : null)
             .friendsCount((long) user.getFriends().size())
             .mutualFriendsCount(0L)
@@ -49,11 +49,7 @@ public class UserMapper {
     public FriendRequestDTO toFriendRequestDTO(UserEntity user, String requestType) {
         Integer batchYear = null;
         if (user.getBatch() != null && user.getBatch().getYear() != null) {
-            try {
-                batchYear = Integer.parseInt(user.getBatch().getYear());
-            } catch (NumberFormatException e) {
-                log.warn("Failed to parse batch year: {}", user.getBatch().getYear());
-            }
+            batchYear = user.getBatch().getYear();
         }
         
         return FriendRequestDTO.builder()
@@ -98,7 +94,7 @@ public class UserMapper {
             .faculty(user.getMajor() != null && user.getMajor().getFaculty() != null ?
                     user.getMajor().getFaculty().getName() : null)
             .major(user.getMajor() != null ? user.getMajor().getName() : null)
-            .batch(user.getBatch() != null ? user.getBatch().getYear() : null)
+            .batch(user.getBatch() != null ? String.valueOf(user.getBatch().getYear()) : null)
             .gender(user.getGender() != null ? user.getGender().getName() : null)
             .collegeCode(user.getMajor() != null && user.getMajor().getFaculty() != null &&
                     user.getMajor().getFaculty().getCollege() != null ?
@@ -106,7 +102,7 @@ public class UserMapper {
             .facultyCode(user.getMajor() != null && user.getMajor().getFaculty() != null ?
                     user.getMajor().getFaculty().getCode() : null)
             .majorCode(user.getMajor() != null ? user.getMajor().getCode() : null)
-            .batchCode(user.getBatch() != null ? user.getBatch().getYear() : null)
+            .batchCode(user.getBatch() != null ? String.valueOf(user.getBatch().getYear()) : null)
             .genderCode(user.getGender() != null ? user.getGender().getCode() : null)
             .friendsCount((long) user.getFriends().size())
             .sentRequestsCount((long) user.getSentFriendRequests().size())
@@ -132,7 +128,7 @@ public class UserMapper {
         dto.setFaculty(user.getMajor() != null && user.getMajor().getFaculty() != null ?
                 user.getMajor().getFaculty().getName() : null);
         dto.setMajor(user.getMajor() != null ? user.getMajor().getName() : null);
-        dto.setBatch(user.getBatch() != null ? user.getBatch().getYear() : null);
+        dto.setBatch(user.getBatch() != null ? String.valueOf(user.getBatch().getYear()) : null);
         dto.setGender(user.getGender() != null ? user.getGender().getName() : null);
         dto.setFriendIds(user.getFriends().stream()
             .map(UserEntity::getId)

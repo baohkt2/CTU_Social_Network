@@ -12,8 +12,14 @@ public interface GenderRepository extends Neo4jRepository<GenderEntity, String> 
     Optional<GenderEntity> findByName(String name);
     
     Optional<GenderEntity> findByCode(String code);
-
     boolean existsByName(String name);
+
+    @Query("""
+        MATCH (g:Gender)
+        RETURN g
+        ORDER BY g.name ASC
+        """)
+    List<GenderEntity> findAllFlat();
 
     @Query("""
         MATCH (g:Gender)

@@ -27,6 +27,13 @@ public interface CollegeRepository extends Neo4jRepository<CollegeEntity, String
 
     @Query("""
         MATCH (c:College)
+        RETURN c
+        ORDER BY c.name ASC
+        """)
+    List<CollegeEntity> findAllFlat();
+
+    @Query("""
+        MATCH (c:College)
         OPTIONAL MATCH (c)-[:HAS_COLLEGE]-(u:University)
         OPTIONAL MATCH (c)-[:HAS_FACULTY]->(f:Faculty)
         RETURN c, u, collect(f) as faculties

@@ -35,9 +35,7 @@ public class MajorEntity {
     @Relationship(type = "HAS_MAJOR", direction = Relationship.Direction.INCOMING)
     private FacultyEntity faculty;
 
-    @Relationship(type = "ENROLLED_IN", direction = Relationship.Direction.INCOMING)
-    @Builder.Default
-    private Set<UserEntity> students = new HashSet<>();
+
 
     // Safe getter methods
     public String getName() {
@@ -52,9 +50,6 @@ public class MajorEntity {
         return description != null ? description : "";
     }
 
-    public Set<UserEntity> getStudents() {
-        return students != null ? students : new HashSet<>();
-    }
 
     @Override
     public boolean equals(Object o) {

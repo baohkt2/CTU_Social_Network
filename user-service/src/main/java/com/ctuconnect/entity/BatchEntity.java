@@ -21,26 +21,21 @@ import java.util.Set;
 public class BatchEntity {
     @Id
     @NotNull(message = "Batch is required")
-    private String year;
+    private Integer year;
 
     private String description;
 
-    @Relationship(type = "IN_BATCH", direction = Relationship.Direction.INCOMING)
-    @Builder.Default
-    private Set<UserEntity> students = new HashSet<>();
+
 
     // Safe getter methods
-    public String getYear() {
-        return year != null ? year : "";
+    public Integer getYear() {
+        return year;
     }
 
     public String getDescription() {
         return description != null ? description : "";
     }
 
-    public Set<UserEntity> getStudents() {
-        return students != null ? students : new HashSet<>();
-    }
 
     @Override
     public boolean equals(Object o) {

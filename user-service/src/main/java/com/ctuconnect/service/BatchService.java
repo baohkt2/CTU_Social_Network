@@ -22,30 +22,30 @@ public class BatchService {
     }
 
     public Optional<BatchDTO> getBatchByYear(String year) {
-        return batchRepository.findById(year)
+        return batchRepository.findById(Integer.valueOf(year))
                 .map(this::convertToDTO);
     }
 
     public BatchDTO createBatch(BatchDTO batchDTO) {
         BatchEntity batch = BatchEntity.builder()
-                .year(batchDTO.getYear())
+                .year(Integer.valueOf(batchDTO.getYear()))
                 .build();
         BatchEntity savedBatch = batchRepository.save(batch);
         return convertToDTO(savedBatch);
     }
 
     public Optional<BatchDTO> updateBatch(String year, BatchDTO batchDTO) {
-        return batchRepository.findById(year)
+        return batchRepository.findById(Integer.valueOf(year))
                 .map(existingBatch -> {
-                    existingBatch.setYear(batchDTO.getYear());
+                    existingBatch.setYear(Integer.valueOf(batchDTO.getYear()));
                     BatchEntity savedBatch = batchRepository.save(existingBatch);
                     return convertToDTO(savedBatch);
                 });
     }
 
     public boolean deleteBatch(String year) {
-        if (batchRepository.existsById(year)) {
-            batchRepository.deleteById(year);
+        if (batchRepository.existsById(Integer.valueOf(year))) {
+            batchRepository.deleteById(Integer.valueOf(year));
             return true;
         }
         return false;
@@ -53,7 +53,7 @@ public class BatchService {
 
     private BatchDTO convertToDTO(BatchEntity batch) {
         return BatchDTO.builder()
-                .year(batch.getYear())
+                .year(String.valueOf(batch.getYear()))
                 .build();
     }
 }

@@ -26,6 +26,13 @@ public interface MajorRepository extends Neo4jRepository<MajorEntity, String> {
     List<MajorEntity> findByFacultyName(@Param("facultyName") String facultyName);
 
     @Query("""
+        MATCH (m:Major)-[:HAS_MAJOR]-(f:Faculty {name: $facultyName})
+        RETURN m
+        ORDER BY m.name ASC
+        """)
+    List<MajorEntity> findFlatByFacultyName(@Param("facultyName") String facultyName);
+
+    @Query("""
         MATCH (m:Major)-[:HAS_MAJOR]-(f:Faculty)-[:HAS_FACULTY]-(c:College {name: $collegeName})
         RETURN m
         ORDER BY m.name ASC

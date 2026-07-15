@@ -164,8 +164,8 @@ public class UserSyncService {
                     }
                 }
             }
-            if (userWithRels.getBatch() != null) {
-                dto.setBatch(userWithRels.getBatch().getYear());
+            if (userWithRels.getBatch() != null && userWithRels.getBatch().getYear() != null) {
+                dto.setBatch(String.valueOf(userWithRels.getBatch().getYear()));
             }
             if (userWithRels.getGender() != null) {
                 dto.setGender(userWithRels.getGender().getName());

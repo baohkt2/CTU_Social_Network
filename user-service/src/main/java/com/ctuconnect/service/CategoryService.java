@@ -41,66 +41,72 @@ public class CategoryService {
     // ===================== HIERARCHICAL DATA RETRIEVAL =====================
 
     public CategoryDTO.HierarchicalCategories getAllCategoriesHierarchical() {
-        // Get all colleges
-        List<CollegeEntity> colleges = collegeRepository.findAll();
-        List<BatchEntity> batches = batchRepository.findAll();
-        List<GenderEntity> genders = genderRepository.findAll();
-
-        // Build hierarchical structure manually
-        List<CategoryDTO.CollegeInfo> collegeInfos = colleges.stream()
-                .map(college -> {
-                    // Get faculties for this college
-                    List<FacultyEntity> faculties = facultyRepository.findByCollegeName(college.getName());
-
-                    List<CategoryDTO.FacultyInfo> facultyInfos = faculties.stream()
-                            .map(faculty -> {
-                                // Get majors for this faculty
-                                List<MajorEntity> majors = majorRepository.findByFacultyName(faculty.getName());
-
-                                List<CategoryDTO.MajorInfo> majorInfos = majors.stream()
-                                        .map(major -> CategoryDTO.MajorInfo.builder()
-                                                .name(major.getName())
-                                                .code(major.getCode())
-                                                .build())
-                                        .collect(Collectors.toList());
-
-                                return CategoryDTO.FacultyInfo.builder()
-                                        .name(faculty.getName())
-                                        .code(faculty.getCode())
-                                        .majors(majorInfos)
-                                        .build();
-                            })
-                            .collect(Collectors.toList());
-
-                    return CategoryDTO.CollegeInfo.builder()
-                            .name(college.getName())
-                            .code(college.getCode())
-                            .faculties(facultyInfos)
-                            .build();
-                })
-                .collect(Collectors.toList());
-
-        List<CategoryDTO.BatchInfo> batchInfos = batches.stream()
-                .map(this::convertToBatchInfo)
-                .collect(Collectors.toList());
-
-        List<CategoryDTO.GenderInfo> genderInfos = genders.stream()
-                .map(this::convertToGenderInfo)
-                .collect(Collectors.toList());
-
-        // Get positions, academic titles, and degrees
-        List<CategoryDTO.PositionInfo> positionInfos = getAllPositions();
-        List<CategoryDTO.AcademicInfo> academicInfos = getAllAcademic();
-        List<CategoryDTO.DegreeInfo> degreeInfos = getAllDegrees();
-
-        return CategoryDTO.HierarchicalCategories.builder()
-                .colleges(collegeInfos)
-                .batches(batchInfos)
-                .genders(genderInfos)
-                .positions(positionInfos)
-                .academics(academicInfos)
-                .degrees(degreeInfos)
-                .build();
+        try {
+            // Use custom Cypher queries to avoid circular reference issues with Spring Data Neo4j
+            // The entities have bidirectional relationships (College -> Faculty -> College) that cause MappingException
+            // when using findAll() which triggers eager-fetching of all relationships.
+            
+            // Query colleges as flat nodes
+            List<CollegeEntity> colleges = collegeRepository.findAllFlat();
+            
+            // Build hierarchical structure by querying faculties/majors separately
+            List<CategoryDTO.CollegeInfo> collegeInfos = colleges.stream()
+                    .map(college -> {
+                        List<FacultyEntity> faculties = facultyRepository.findFlatByCollegeName(college.getName());
+    
+                        List<CategoryDTO.FacultyInfo> facultyInfos = faculties.stream()
+                                .map(faculty -> {
+                                    List<MajorEntity> majors = majorRepository.findFlatByFacultyName(faculty.getName());
+    
+                                    List<CategoryDTO.MajorInfo> majorInfos = majors.stream()
+                                            .map(major -> CategoryDTO.MajorInfo.builder()
+                                                    .name(major.getName())
+                                                    .code(major.getCode())
+                                                    .build())
+                                            .collect(Collectors.toList());
+    
+                                    return CategoryDTO.FacultyInfo.builder()
+                                            .name(faculty.getName())
+                                            .code(faculty.getCode())
+                                            .majors(majorInfos)
+                                            .build();
+                                })
+                                .collect(Collectors.toList());
+    
+                        return CategoryDTO.CollegeInfo.builder()
+                                .name(college.getName())
+                                .code(college.getCode())
+                                .faculties(facultyInfos)
+                                .build();
+                    })
+                    .collect(Collectors.toList());
+    
+            List<CategoryDTO.BatchInfo> batchInfos = batchRepository.findAllFlat().stream()
+                    .map(this::convertToBatchInfo)
+                    .collect(Collectors.toList());
+    
+            List<CategoryDTO.GenderInfo> genderInfos = genderRepository.findAllFlat().stream()
+                    .map(this::convertToGenderInfo)
+                    .collect(Collectors.toList());
+    
+            // Get positions, academic titles, and degrees
+            List<CategoryDTO.PositionInfo> positionInfos = getAllPositions();
+            List<CategoryDTO.AcademicInfo> academicInfos = getAllAcademic();
+            List<CategoryDTO.DegreeInfo> degreeInfos = getAllDegrees();
+    
+            return CategoryDTO.HierarchicalCategories.builder()
+                    .colleges(collegeInfos)
+                    .batches(batchInfos)
+                    .genders(genderInfos)
+                    .positions(positionInfos)
+                    .academics(academicInfos)
+                    .degrees(degreeInfos)
+                    .build();
+        } catch (Exception e) {
+            System.err.println("CRITICAL ERROR IN getAllCategoriesHierarchical:");
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     private List<CategoryDTO.AcademicInfo> getAllAcademic() {
@@ -352,7 +358,7 @@ public class CategoryService {
     }
 
     public CategoryDTO.BatchInfo getBatchByYear(String year) {
-        BatchEntity batch = batchRepository.findByYear(year)
+        BatchEntity batch = batchRepository.findByYear(Integer.valueOf(year))
                 .orElseThrow(() -> new RuntimeException("Batch not found: " + year));
         return convertToBatchInfo(batch);
     }
@@ -376,7 +382,7 @@ public class CategoryService {
 
     private CategoryDTO.BatchInfo convertToBatchInfo(BatchEntity batch) {
         return CategoryDTO.BatchInfo.builder()
-                .year(batch.getYear())
+                .year(String.valueOf(batch.getYear()))
                 .build();
     }
 

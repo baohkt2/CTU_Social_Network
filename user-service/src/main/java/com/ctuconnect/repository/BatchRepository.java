@@ -8,11 +8,18 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 import java.util.Optional;
 
-public interface BatchRepository extends Neo4jRepository<BatchEntity, String> {
+public interface BatchRepository extends Neo4jRepository<BatchEntity, Integer> {
 
-    Optional<BatchEntity> findByYear(String year);
+    Optional<BatchEntity> findByYear(Integer year);
 
-    boolean existsByYear(String year);
+    boolean existsByYear(Integer year);
+
+    @Query("""
+        MATCH (b:Batch)
+        RETURN b
+        ORDER BY b.year DESC
+        """)
+    List<BatchEntity> findAllFlat();
     @Query("""
         MATCH (b:Batch)
         WHERE b.year >= $startYear AND b.year <= $endYear

@@ -22,9 +22,6 @@ public class DegreeEntity {
 
     private String description; // Mô tả chi tiết về bằng cấp
 
-    @Relationship(type = "HAS_ACADEMIC", direction = Relationship.Direction.INCOMING)
-    private List<UserEntity> users;
-
     public String getId() {
         return code; // Sử dụng mã làm ID
     }

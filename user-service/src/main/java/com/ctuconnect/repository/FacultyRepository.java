@@ -26,6 +26,13 @@ public interface FacultyRepository extends Neo4jRepository<FacultyEntity, String
     List<FacultyEntity> findByCollegeName(@Param("collegeName") String collegeName);
 
     @Query("""
+        MATCH (f:Faculty)-[:HAS_FACULTY]-(c:College {name: $collegeName})
+        RETURN f
+        ORDER BY f.name ASC
+        """)
+    List<FacultyEntity> findFlatByCollegeName(@Param("collegeName") String collegeName);
+
+    @Query("""
         MATCH (f:Faculty)
         OPTIONAL MATCH (f)-[:HAS_FACULTY]-(c:College)
         OPTIONAL MATCH (f)-[:HAS_MAJOR]->(m:Major)
