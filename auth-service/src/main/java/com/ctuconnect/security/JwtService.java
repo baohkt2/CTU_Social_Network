@@ -125,11 +125,10 @@ public class JwtService {
         return false;
     }
 
+    @org.springframework.beans.factory.annotation.Value("${jwt.secret:XpExu6h1RJoY1qFZyLVzJbor/aYutNR2AD86ZM/tKqc=}")
+    private String secretKey;
 
     private Key getSignInKey() {
-        // Ensure jwtSecret is Base64 encoded in application.properties/yml
-        // Sử dụng giá trị cố định thay vì đọc từ file cấu hình
-        String secretKey = "XpExu6h1RJoY1qFZyLVzJbor/aYutNR2AD86ZM/tKqc=";
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }

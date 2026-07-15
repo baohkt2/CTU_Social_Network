@@ -1,6 +1,7 @@
-D:\LVTN\CTU-Connect-demo\api-gateway\src\main\java\com\ctuconnect\ApiGatewayApplication.java
-D:\LVTN\CTU-Connect-demo\api-gateway\src\main\java\com\ctuconnect\config\CorsConfig.java
-D:\LVTN\CTU-Connect-demo\api-gateway\src\main\java\com\ctuconnect\config\RouteConfig.java
-D:\LVTN\CTU-Connect-demo\api-gateway\src\main\java\com\ctuconnect\filter\AuthResponseFilter.java
-D:\LVTN\CTU-Connect-demo\api-gateway\src\main\java\com\ctuconnect\filter\JwtAuthenticationFilter.java
-D:\LVTN\CTU-Connect-demo\api-gateway\src\main\java\com\ctuconnect\filter\LoggingFilter.java
+D:\CanThoUniversity\LVTN\CTU-Connect-demo\api-gateway\src\main\java\com\ctuconnect\ApiGatewayApplication.java
+D:\CanThoUniversity\LVTN\CTU-Connect-demo\api-gateway\src\main\java\com\ctuconnect\config\CorsConfig.java
+D:\CanThoUniversity\LVTN\CTU-Connect-demo\api-gateway\src\main\java\com\ctuconnect\config\GatewayRateLimiterConfig.java
+D:\CanThoUniversity\LVTN\CTU-Connect-demo\api-gateway\src\main\java\com\ctuconnect\config\RouteConfig.java
+D:\CanThoUniversity\LVTN\CTU-Connect-demo\api-gateway\src\main\java\com\ctuconnect\filter\AuthResponseFilter.java
+D:\CanThoUniversity\LVTN\CTU-Connect-demo\api-gateway\src\main\java\com\ctuconnect\filter\JwtAuthenticationFilter.java
+D:\CanThoUniversity\LVTN\CTU-Connect-demo\api-gateway\src\main\java\com\ctuconnect\filter\LoggingFilter.java

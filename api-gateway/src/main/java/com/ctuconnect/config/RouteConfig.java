@@ -1,6 +1,8 @@
 package com.ctuconnect.config;
 
 import com.ctuconnect.filter.JwtAuthenticationFilter;
+import org.springframework.cloud.gateway.filter.ratelimit.KeyResolver;
+import org.springframework.cloud.gateway.filter.ratelimit.RedisRateLimiter;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
@@ -10,14 +12,37 @@ import org.springframework.context.annotation.Configuration;
 public class RouteConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final RedisRateLimiter authPublicRedisRateLimiter;
+    private final KeyResolver ipKeyResolver;
 
-    public RouteConfig(JwtAuthenticationFilter jwtAuthenticationFilter) {
+    public RouteConfig(
+            JwtAuthenticationFilter jwtAuthenticationFilter,
+            RedisRateLimiter authPublicRedisRateLimiter,
+            KeyResolver ipKeyResolver) {
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+        this.authPublicRedisRateLimiter = authPublicRedisRateLimiter;
+        this.ipKeyResolver = ipKeyResolver;
     }
 
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
+                // Public auth endpoints: rate limit by client IP (brute-force / abuse mitigation)
+                .route("auth-public-rate-limit", r -> r
+                        .path(
+                                "/api/auth/login",
+                                "/api/auth/register",
+                                "/api/auth/refresh-token",
+                                "/api/auth/forgot-password",
+                                "/api/auth/reset-password",
+                                "/api/auth/verify-email",
+                                "/api/auth/resend-verification")
+                        .filters(f -> f
+                                .requestRateLimiter(rl -> rl
+                                        .setRateLimiter(authPublicRedisRateLimiter)
+                                        .setKeyResolver(ipKeyResolver))
+                                .filter(jwtAuthenticationFilter.apply(new JwtAuthenticationFilter.Config())))
+                        .uri("lb://auth-service"))
                 // Auth Service Routes - Apply JWT filter (will skip public endpoints internally)
                 .route("auth-service-route", r -> r
                         .path("/api/auth/**")

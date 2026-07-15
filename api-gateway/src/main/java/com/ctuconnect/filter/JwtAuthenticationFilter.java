@@ -42,6 +42,7 @@ public class JwtAuthenticationFilter extends AbstractGatewayFilterFactory<JwtAut
             "/api/auth/forgot-password",
             "/api/auth/reset-password",
             "/api/auth/verify-email",
+            "/api/users/categories/**",
             "/api/test",
             "/actuator"
     );

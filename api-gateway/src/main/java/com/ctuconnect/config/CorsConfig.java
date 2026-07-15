@@ -17,7 +17,6 @@ public class CorsConfig {
     // 1. Uncomment the bean below
     // 2. Remove CORS configuration from all service SecurityConfig files
     
-    /*
     @Bean
     public CorsWebFilter corsWebFilter() {
         CorsConfiguration configuration = new CorsConfiguration();
@@ -25,7 +24,8 @@ public class CorsConfig {
         // Allow specific origins
         configuration.addAllowedOrigin("http://localhost:3000"); // Client frontend
         configuration.addAllowedOrigin("http://localhost:3001"); // Admin frontend
-        configuration.addAllowedOrigin("http://localhost:8090"); // API Gateway
+        configuration.addAllowedOrigin("http://localhost:18090"); // API Gateway
+        configuration.addAllowedOrigin("http://localhost:8090"); // API Gateway internal
         
         // Allow all headers
         configuration.addAllowedHeader("*");
@@ -44,5 +44,4 @@ public class CorsConfig {
 
         return new CorsWebFilter(source);
     }
-    */
 }

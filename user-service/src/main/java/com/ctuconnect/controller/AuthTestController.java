@@ -3,14 +3,16 @@ package com.ctuconnect.controller;
 import com.ctuconnect.dto.AuthContextDTO;
 import com.ctuconnect.security.SecurityContextHolder;
 import com.ctuconnect.security.annotation.RequireAuth;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * Controller để test và demo các chức năng xác thực
+ * Controller để test và demo các chức năng xác thực (chỉ bật với profile {@code dev}).
  */
 @RestController
 @RequestMapping("/api/auth-test")
+@Profile("dev")
 public class AuthTestController {
 
     /**

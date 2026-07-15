@@ -20,7 +20,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // Cho phép truy cập công khai đến các endpoint internal service calls
                         .requestMatchers(
-                                "/api/users/**"
+                                "/api/users/**",
+                                "/actuator/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
