@@ -1,0 +1,42 @@
+version: 2
+updates:
+  - package-ecosystem: maven
+    directory: "/eureka-server"
+    schedule:
+      interval: monthly
+  - package-ecosystem: maven
+    directory: "/api-gateway"
+    schedule:
+      interval: monthly
+  - package-ecosystem: maven
+    directory: "/auth-service"
+    schedule:
+      interval: monthly
+  - package-ecosystem: maven
+    directory: "/user-service"
+    schedule:
+      interval: monthly
+  - package-ecosystem: maven
+    directory: "/post-service"
+    schedule:
+      interval: monthly
+  - package-ecosystem: maven
+    directory: "/chat-service"
+    schedule:
+      interval: monthly
+  - package-ecosystem: maven
+    directory: "/media-service"
+    schedule:
+      interval: monthly
+  - package-ecosystem: maven
+    directory: "/recommend-service/java-api"
+    schedule:
+      interval: monthly
+  - package-ecosystem: npm
+    directory: "/client-frontend"
+    schedule:
+      interval: monthly
+  - package-ecosystem: npm
+    directory: "/admin-frontend"
+    schedule:
+      interval: monthly

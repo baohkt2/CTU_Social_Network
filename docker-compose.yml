@@ -27,9 +27,13 @@ services:
     depends_on:
       eureka-server:
         condition: service_healthy
+      redis:
+        condition: service_healthy
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - JWT_SECRET=${JWT_SECRET:-change_this_secret_in_production}
+      - JWT_EXPIRATION=${JWT_EXPIRATION:-86400000}
     extra_hosts:
       - "host.docker.internal:host-gateway"
     networks:
@@ -74,7 +78,7 @@ services:
       - ./database/neo4j/import:/import
       - ./database/neo4j/init.sh:/docker-entrypoint-initdb.d/init.sh
     environment:
-      - NEO4J_AUTH=neo4j/password
+      - NEO4J_AUTH=${NEO4J_USER:-neo4j}/${NEO4J_PASSWORD:-password}
       - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
       - NEO4J_dbms_security_procedures_unrestricted=apoc.*
       - NEO4J_dbms_security_procedures_allowlist=apoc.*
@@ -126,7 +130,7 @@ services:
     command: 
       - /bin/sh
       - -c
-      - "if [ ! -f /var/lib/kafka/data/meta.properties ]; then CLUSTER_ID=$$(/opt/kafka/bin/kafka-storage.sh random-uuid); /opt/kafka/bin/kafka-storage.sh format -t $$CLUSTER_ID -c /opt/kafka/config/kraft/server.properties; fi; /opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/kraft/server.properties"
+      - "if [ ! -f /var/lib/kafka/data/meta.properties ]; then CLUSTER_ID=$$(/opt/kafka/bin/kafka-storage.sh random-uuid); /opt/kafka/bin/kafka-storage.sh format -t $$CLUSTER_ID -c /opt/kafka/config/kraft/server.properties; fi; /opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/kraft/server.properties --override listeners=INTERNAL://:29092,EXTERNAL://:9092,CONTROLLER://:9093 --override advertised.listeners=INTERNAL://kafka:29092,EXTERNAL://localhost:9092 --override listener.security.protocol.map=CONTROLLER:PLAINTEXT,INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT --override inter.broker.listener.name=INTERNAL"
       
     networks:
       - ctuconnect-network
@@ -224,9 +228,9 @@ services:
     image: postgres:15-alpine
     container_name: ctu-recommend-postgres
     environment:
-      POSTGRES_DB: recommend_db
-      POSTGRES_USER: recommend_user
-      POSTGRES_PASSWORD: recommend_pass
+      POSTGRES_DB: ${RECOMMEND_DB_NAME:-recommend_db}
+      POSTGRES_USER: ${RECOMMEND_DB_USER:-recommend_user}
+      POSTGRES_PASSWORD: ${RECOMMEND_DB_PASSWORD:-recommend_pass}
       PGDATA: /var/lib/postgresql/data/pgdata
     ports:
       - "5435:5432"
@@ -236,7 +240,7 @@ services:
     networks:
       - ctuconnect-network
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U recommend_user -d recommend_db"]
+      test: ["CMD-SHELL", "pg_isready -U ${RECOMMEND_DB_USER:-recommend_user} -d ${RECOMMEND_DB_NAME:-recommend_db}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -248,13 +252,13 @@ services:
     container_name: ctu-recommend-redis
     ports:
       - "6380:6379"
-    command: redis-server --appendonly yes --requirepass recommend_redis_pass
+    command: redis-server --appendonly yes --requirepass ${RECOMMEND_REDIS_PASSWORD:-recommend_redis_pass}
     volumes:
       - recommend-redis-data:/data
     networks:
       - ctuconnect-network
     healthcheck:
-      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      test: ["CMD", "redis-cli", "-a", "${RECOMMEND_REDIS_PASSWORD:-recommend_redis_pass}", "ping"]
       interval: 10s
       timeout: 3s
       retries: 5
@@ -278,8 +282,8 @@ services:
       - LOG_LEVEL=INFO
       - WORKERS=1
       - PYTHONUNBUFFERED=1
-      - DATABASE_URL=postgresql://recommend_user:recommend_pass@recommend-postgres:5432/recommend_db
-      - REDIS_URL=redis://:recommend_redis_pass@recommend-redis:6379/0
+      - DATABASE_URL=postgresql://${RECOMMEND_DB_USER:-recommend_user}:${RECOMMEND_DB_PASSWORD:-recommend_pass}@recommend-postgres:5432/${RECOMMEND_DB_NAME:-recommend_db}
+      - REDIS_URL=redis://:${RECOMMEND_REDIS_PASSWORD:-recommend_redis_pass}@recommend-redis:6379/0
     volumes:
       # Mount entire python-model directory for live code reload
       - ./recommend-service/python-model:/app:cached
@@ -310,10 +314,17 @@ services:
       context: ./recommend-service/java-api
     container_name: ctu-recommendation-service
     ports:
-      - "8095:8095"
+      - "${RECOMMEND_SERVICE_PORT:-18095}:8095"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - RECOMMEND_DB_USER=${RECOMMEND_DB_USER:-recommend_user}
+      - RECOMMEND_DB_PASSWORD=${RECOMMEND_DB_PASSWORD:-recommend_pass}
+      - RECOMMEND_REDIS_PASSWORD=${RECOMMEND_REDIS_PASSWORD:-recommend_redis_pass}
+      - NEO4J_USER=${NEO4J_USER:-neo4j}
+      - NEO4J_PASSWORD=${NEO4J_PASSWORD:-password}
+      - JWT_SECRET=${JWT_SECRET:-change_this_secret_in_production}
+      - JWT_EXPIRATION=${JWT_EXPIRATION:-86400000}
     depends_on:
       eureka-server:
         condition: service_healthy
@@ -328,7 +339,9 @@ services:
       kafka:
         condition: service_healthy
     networks:
-      - ctuconnect-network
+      ctuconnect-network:
+        aliases:
+          - recommend-java-api
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8095/actuator/health"]
       interval: 30s
@@ -336,6 +349,173 @@ services:
       retries: 3
       start_period: 60s
     restart: unless-stopped
+
+  # ============================================================
+  # CORE MICROSERVICES
+  # ============================================================
+
+  auth-service:
+    build:
+      context: ./auth-service
+    container_name: auth-service
+    ports:
+      - "${AUTH_SERVICE_PORT:-18080}:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - JWT_SECRET=${JWT_SECRET:-change_this_secret_in_production}
+      - JWT_EXPIRATION=${JWT_EXPIRATION:-86400000}
+      - MAIL_HOST=${MAIL_HOST:-smtp.gmail.com}
+      - MAIL_PORT=${MAIL_PORT:-587}
+      - MAIL_USERNAME=${MAIL_USERNAME:-noreply@ctuconnect.local}
+      - MAIL_PASSWORD=${MAIL_PASSWORD:-dummy-password}
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+      auth_db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - ctuconnect-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 90s
+
+  media-service:
+    build:
+      context: ./media-service
+    container_name: media-service
+    ports:
+      - "${MEDIA_SERVICE_PORT:-18084}:8084"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CLOUDINARY_CLOUD_NAME=${CLOUDINARY_CLOUD_NAME:-}
+      - CLOUDINARY_API_KEY=${CLOUDINARY_API_KEY:-}
+      - CLOUDINARY_API_SECRET=${CLOUDINARY_API_SECRET:-}
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+      media_db:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+    networks:
+      - ctuconnect-network
+
+  user-service:
+    build:
+      context: ./user-service
+    container_name: user-service
+    ports:
+      - "${USER_SERVICE_PORT:-18081}:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+      - NEO4J_USER=${NEO4J_USER:-neo4j}
+      - NEO4J_PASSWORD=${NEO4J_PASSWORD:-password}
+      - JWT_SECRET=${JWT_SECRET:-change_this_secret_in_production}
+      - JWT_EXPIRATION=${JWT_EXPIRATION:-86400000}
+      - RECOMMEND_SERVICE_URL=http://recommendation-service:8095
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+      neo4j:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+      recommendation-service:
+        condition: service_healthy
+    networks:
+      - ctuconnect-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 90s
+
+  post-service:
+    build:
+      context: ./post-service
+    container_name: post-service
+    ports:
+      - "${POST_SERVICE_PORT:-18085}:8085"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+      post_db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+      user-service:
+        condition: service_started
+      media-service:
+        condition: service_started
+    networks:
+      - ctuconnect-network
+
+  chat-service:
+    build:
+      context: ./chat-service
+    container_name: chat-service
+    ports:
+      - "${CHAT_SERVICE_PORT:-18086}:8086"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+      - JWT_SECRET=${JWT_SECRET:-change_this_secret_in_production}
+      - JWT_EXPIRATION=${JWT_EXPIRATION:-86400000}
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+      chat_db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+    networks:
+      - ctuconnect-network
+
+  prometheus:
+    image: prom/prometheus:v2.54.1
+    container_name: ctu-prometheus
+    ports:
+      - "${PROMETHEUS_PORT:-19090}:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --web.enable-lifecycle
+    networks:
+      - ctuconnect-network
+    depends_on:
+      api-gateway:
+        condition: service_healthy
+    profiles:
+      - monitoring
 
 networks:
   ctuconnect-network:
