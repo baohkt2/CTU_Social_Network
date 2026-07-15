@@ -49,6 +49,23 @@ export default function StudentProfileForm({ user }: StudentProfileFormProps) {
             try {
                 const hierarchicalData = await categoryService.getAllCategories();
 
+                // Fix missing codes from backend
+                if (hierarchicalData && hierarchicalData.colleges) {
+                    hierarchicalData.colleges.forEach(c => {
+                        if (!c.code) c.code = c.name;
+                        if (c.faculties) {
+                            c.faculties.forEach(f => {
+                                if (!f.code) f.code = f.name;
+                                if (f.majors) {
+                                    f.majors.forEach(m => {
+                                        if (!m.code) m.code = m.name;
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+
                 const colleges = hierarchicalData.colleges.map(college => ({
                     name: college.name,
                     code: college.code

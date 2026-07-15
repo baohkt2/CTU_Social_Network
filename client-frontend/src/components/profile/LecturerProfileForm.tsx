@@ -49,6 +49,24 @@ export default function LecturerProfileForm({ user }: LecturerProfileFormProps) 
         const loadDropdownData = async () => {
             try {
                 const hierarchicalData = await categoryService.getAllCategories();
+                
+                // Fix missing codes from backend
+                if (hierarchicalData && hierarchicalData.colleges) {
+                    hierarchicalData.colleges.forEach(c => {
+                        if (!c.code) c.code = c.name;
+                        if (c.faculties) {
+                            c.faculties.forEach(f => {
+                                if (!f.code) f.code = f.name;
+                                if (f.majors) {
+                                    f.majors.forEach(m => {
+                                        if (!m.code) m.code = m.name;
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+
                 const colleges = hierarchicalData.colleges.map(college => ({
                     code: college.code,
                     name: college.name,

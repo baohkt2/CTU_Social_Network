@@ -22,7 +22,11 @@ export const metadata: Metadata = {
     description: "Kết nối sinh viên Đại học Cần Thơ, chia sẻ thông tin, học tập và giao lưu",
     keywords: "CTU, Can Tho University, sinh viên, mạng xã hội, học tập",
     authors: [{name: "CTU Connect Team"}],
-    viewport: "width=device-width, initial-scale=1",
+};
+
+export const viewport = {
+    width: "device-width",
+    initialScale: 1,
 };
 
 export default function RootLayout({
