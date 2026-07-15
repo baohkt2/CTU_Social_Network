@@ -77,6 +77,8 @@ public class EmbeddingService {
                 Object embeddingObj = response.get("embedding");
                 float[] embedding = null;
                 
+                log.info("Python service response contains embedding of type: {}", embeddingObj != null ? embeddingObj.getClass().getName() : "null");
+                
                 if (embeddingObj instanceof java.util.List) {
                     java.util.List<?> list = (java.util.List<?>) embeddingObj;
                     embedding = new float[list.size()];
@@ -84,10 +86,14 @@ public class EmbeddingService {
                         Object val = list.get(i);
                         if (val instanceof Number) {
                             embedding[i] = ((Number) val).floatValue();
+                        } else {
+                            log.warn("Embedding list element is not a Number: {} (type: {})", val, val != null ? val.getClass().getName() : "null");
                         }
                     }
                 } else if (embeddingObj instanceof float[]) {
                     embedding = (float[]) embeddingObj;
+                } else {
+                    log.warn("embeddingObj is neither List nor float[]. It is: {}", embeddingObj != null ? embeddingObj.getClass().getName() : "null");
                 }
                 
                 if (embedding != null && embedding.length > 0) {

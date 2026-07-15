@@ -40,3 +40,6 @@ recommendation:
     phobert-service-url: http://phobert-nlp:8096
   python-service:
     url: http://recommend-python:8000
+
+user-service:
+  url: http://user-service:8081
