@@ -1,9 +1,6 @@
 'use client';
 
 import React from 'react';
-import AuthStatus from '@/components/AuthStatus';
-import ApiTest from '@/components/ApiTest';
-import DirectApiTest from '@/components/DirectApiTest';
 import Card from '@/components/ui/Card';
 
 const TestAuthDevPage: React.FC = () => {
@@ -15,14 +12,9 @@ const TestAuthDevPage: React.FC = () => {
         <Card className="p-6">
           <h2 className="text-xl font-semibold mb-4">Debug Information</h2>
           <p className="text-gray-600 mb-4">
-            This page helps debug authentication issues. Use the components below to test API calls and check
-            authentication status.
+            This page helps debug authentication issues. (Note: Test components are temporarily removed).
           </p>
         </Card>
-
-        <AuthStatus />
-        <DirectApiTest />
-        <ApiTest />
       </div>
     </div>
   );
